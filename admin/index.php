@@ -8,20 +8,25 @@
       $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]".$customPath;
       header("Location: $actual_link");
   }else{
-    $sql = "SELECT COUNT(*) AS total_categories FROM categories;";
+    $sql = "SELECT COUNT(*) AS total_mes FROM mes_index;";
     $result = $conn->query($sql);
     $data = mysqli_fetch_assoc($result);
-    $total_cat = $data["total_categories"];
+    $total_mes = $data["total_mes"];
 
-    $sql = "SELECT COUNT(*) AS total_spec FROM specifications;";
+    $sql = "SELECT COUNT(*) AS total_sec FROM sectorial_index;";
     $result = $conn->query($sql);
     $data = mysqli_fetch_assoc($result);
-    $total_spec = $data["total_spec"];
+    $total_sec = $data["total_sec"];
+
+    $sql = "SELECT COUNT(*) AS total_ind FROM industry_index;";
+    $result = $conn->query($sql);
+    $data = mysqli_fetch_assoc($result);
+    $total_ind = $data["total_ind"];
     
-    $sql = "SELECT COUNT(*) AS total_product FROM product;";
+    $sql = "SELECT COUNT(*) AS total_bid FROM basic_industry_index;";
     $result = $conn->query($sql);
     $data = mysqli_fetch_assoc($result);
-    $total_product = $data["total_product"];
+    $total_bid = $data["total_bid"];
 
     $sql = "SELECT COUNT(*) AS total_admins FROM admins;";
     $result = $conn->query($sql);
@@ -36,7 +41,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="./assets/images/drawing.svg">
+    <link rel="icon" href="./assets/images/favicon.png">
     <title>Vitt - Admin Panel</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
@@ -101,99 +106,7 @@
                   <h2 class="h5 page-title">Welcome, <?php echo $_SESSION['name'];?>!</h2>
                 </div>
               </div>
-            <?php if($_SESSION['is_superadmin'] ):?> 
-              <div class="row">
-                <div class="col">
-                  <h2 class="mb-2 page-title">Revenue Board</h2>
-                </div>
-              </div>
               <br/>
-              <div class="row items-align-baseline">
-                <div class="col-md-12 col-lg-4">
-                  <div class="card shadow eq-card mb-4">
-                    <div class="card-body mb-n3">
-                      <div class="row items-align-baseline h-100">
-                        <div class="col-md-6 my-3">
-                          <p class="mb-0"><strong class="mb-0 text-uppercase text-muted">Company's Profit</strong></p>
-                          <h3>₹ 0/-</h3>
-                          <p class="text-muted">Company's Profit <br/> * Since Last Year</p>
-                        </div>
-                        <div class="col-md-6 my-4 text-center">
-                          <div lass="chart-box mx-4">
-                            <div id="radialbarWidget"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 border-top py-3">
-                          <p class="mb-1"><strong class="text-muted">Cost</strong></p>
-                          <h4 class="mb-0">0</h4>
-                          <p class="small text-muted mb-0"><span>0% Last week</span></p>
-                        </div> <!-- .col -->
-                        <div class="col-md-6 border-top py-3">
-                          <p class="mb-1"><strong class="text-muted">Revenue</strong></p>
-                          <h4 class="mb-0">0</h4>
-                          <p class="small text-muted mb-0"><span>-0% Last week</span></p>
-                        </div> <!-- .col -->
-                      </div>
-                    </div> <!-- .card-body -->
-                  </div> <!-- .card -->
-                </div> <!-- .col -->
-                <div class="col-md-12 col-lg-4">
-                  <div class="card shadow eq-card mb-4">
-                    <div class="card-body">
-                      <div class="chart-widget mb-2">
-                        <div id="radialbar"></div>
-                      </div>
-                      <div class="row items-align-center">
-                        <div class="col-4 text-center">
-                          <p class="text-muted mb-1">Cost</p>
-                          <h6 class="mb-1">₹ 0</h6>
-                          <p class="text-muted mb-0">+0%</p>
-                        </div>
-                        <div class="col-4 text-center">
-                          <p class="text-muted mb-1">Revenue</p>
-                          <h6 class="mb-1">₹ 0</h6>
-                          <p class="text-muted mb-0">+0%</p>
-                        </div>
-                        <div class="col-4 text-center">
-                          <p class="text-muted mb-1">Earning</p>
-                          <h6 class="mb-1">₹ 0</h6>
-                          <p class="text-muted mb-0">+0%</p>
-                        </div>
-                      </div>
-                    </div> <!-- .card-body -->
-                  </div> <!-- .card -->
-                </div> <!-- .col -->
-                <div class="col-md-12 col-lg-4">
-                  <div class="card shadow eq-card mb-4">
-                    <div class="card-body">
-                      <div class="d-flex mt-3 mb-4">
-                        <div class="flex-fill pt-2">
-                          <p class="mb-0 text-muted">Total</p>
-                          <h4 class="mb-0">0</h4>
-                          <span class="small text-muted">+0%</span>
-                        </div>
-                        <div class="flex-fill chart-box mt-n2">
-                          <div id="barChartWidget"></div>
-                        </div>
-                      </div> <!-- .d-flex -->
-                      <div class="row border-top">
-                        <div class="col-md-6 pt-4">
-                          <h6 class="mb-0">0 <span class="small text-muted">+0%</span></h6>
-                          <p class="mb-0 text-muted">Cost</p>
-                        </div>
-                        <div class="col-md-6 pt-4">
-                          <h6 class="mb-0">0 <span class="small text-muted">-0%</span></h6>
-                          <p class="mb-0 text-muted">Revenue</p>
-                        </div>
-                      </div> <!-- .row -->
-                    </div> <!-- .card-body -->
-                  </div> <!-- .card -->
-                </div> <!-- .col-md -->
-              </div> <!-- .row -->
-            <?php endif;?>
-
-              <br/>
-            <?php if($_SESSION['is_superadmin'] ):?>
               <div class="row">
                 <div class="col">
                   <h2 class="mb-2 page-title">Admin Dashboard</h2>
@@ -206,8 +119,8 @@
                       <div class="card-body">
                         <div class="row align-items-center">
                           <div class="col">
-                            <span class="h2 mb-4"><?php echo $total_product;?></span>
-                            <p class="small text-muted mb-0">Total Products</p>
+                            <span class="h2 mb-4"><?php echo $total_company;?></span>
+                            <p class="small text-muted mb-0">Total Company</p>
                             <span class="badge badge-pill badge-success"><span class="fe fe-16 fe-bar-chart-2 text-muted mb-0" style="color: black !important;"></span></span>
                           </div>
                           <div class="col-auto">
@@ -222,8 +135,24 @@
                       <div class="card-body">
                         <div class="row align-items-center">
                           <div class="col">
-                            <span class="h2 mb-0"><?php echo $total_cat;?></span>
-                            <p class="small text-muted mb-0">Total Categories</p>
+                            <span class="h2 mb-0"><?php echo $total_mes;?></span>
+                            <p class="small text-muted mb-0">Total M.E.S Industries</p>
+                            <span class="badge badge-pill badge-warning"><span class="fe fe-16 fe-bar-chart-2 text-muted mb-0" style="color: black !important;"></span></span>
+                          </div>
+                          <div class="col-auto">
+                            <span class="fe fe-32 fe-layers text-muted mb-0"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-4">
+                    <div class="card shadow">
+                      <div class="card-body">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <span class="h2 mb-0"><?php echo $total_sec;?></span>
+                            <p class="small text-muted mb-0">Total Sectorial Industries</p>
                             <span class="badge badge-pill badge-success"><span class="fe fe-16 fe-bar-chart text-muted mb-0" style="color: black !important;"></span></span>
                           </div>
                           <div class="col-auto">
@@ -238,8 +167,24 @@
                       <div class="card-body">
                         <div class="row align-items-center">
                           <div class="col">
-                            <span class="h2 mb-0"><?php echo $total_spec;?></span>
-                            <p class="small text-muted mb-0">Total Specifications</p>
+                            <span class="h2 mb-0"><?php echo $total_ind;?></span>
+                            <p class="small text-muted mb-0">Total Industries</p>
+                            <span class="badge badge-pill badge-success"><span class="fe fe-16 fe-bar-chart text-muted mb-0" style="color: black !important;"></span></span>
+                          </div>
+                          <div class="col-auto">
+                            <span class="fe fe-32 fe-clipboard text-muted mb-0"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-4">
+                    <div class="card shadow">
+                      <div class="card-body">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <span class="h2 mb-0"><?php echo $total_bid;?></span>
+                            <p class="small text-muted mb-0">Total Basic Industries</p>
                             <span class="badge badge-pill badge-warning"><span class="fe fe-16 fe-bar-chart-2 text-muted mb-0" style="color: black !important;"></span></span>
                           </div>
                           <div class="col-auto">
@@ -266,81 +211,7 @@
                     </div>
                   </div>
                 </div> <!-- end section -->
-              <?php endif;?>
-              <?php if(!$_SESSION['is_superadmin'] ):?>
-              <div class="row">
-                <div class="col">
-                  <h2 class="mb-2 page-title">Dashboard</h2>
-                </div>
-              </div>
-              <br/>
-              <div class="row">
-                  <div class="col-md-3 mb-4">
-                    <div class="card shadow">
-                      <div class="card-body">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <span class="h2 mb-4"><?php echo $total_product;?></span>
-                            <p class="small text-muted mb-0">Total Products</p>
-                            <span class="badge badge-pill badge-success"><span class="fe fe-16 fe-bar-chart-2 text-muted mb-0" style="color: black !important;"></span></span>
-                          </div>
-                          <div class="col-auto">
-                            <span class="fe fe-32 fe-shopping-bag text-muted mb-0"></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4">
-                    <div class="card shadow">
-                      <div class="card-body">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <span class="h2 mb-0"><?php echo $total_cat;?></span>
-                            <p class="small text-muted mb-0">Total Categories</p>
-                            <span class="badge badge-pill badge-success"><span class="fe fe-16 fe-bar-chart text-muted mb-0" style="color: black !important;"></span></span>
-                          </div>
-                          <div class="col-auto">
-                            <span class="fe fe-32 fe-clipboard text-muted mb-0"></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4">
-                    <div class="card shadow">
-                      <div class="card-body">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <span class="h2 mb-0"><?php echo $total_spec;?></span>
-                            <p class="small text-muted mb-0">Total Specifications</p>
-                            <span class="badge badge-pill badge-warning"><span class="fe fe-16 fe-bar-chart-2 text-muted mb-0" style="color: black !important;"></span></span>
-                          </div>
-                          <div class="col-auto">
-                            <span class="fe fe-32 fe-layers text-muted mb-0"></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-4">
-                    <div class="card shadow">
-                      <div class="card-body">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <span class="h2 mb-0"><?php echo $total_spec;?></span>
-                            <p class="small text-muted mb-0">Total Brands</p>
-                            <span class="badge badge-pill badge-warning"><span class="fe fe-16 fe-bar-chart-2 text-muted mb-0" style="color: black !important;"></span></span>
-                          </div>
-                          <div class="col-auto">
-                            <span class="fe fe-32 fe-layers text-muted mb-0"></span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> <!-- end section -->
-              <?php endif;?>
+              
                 <div class="row">
                   <div class="col-md-12">
                     <p class="mt-5 mb-3 text-muted">© <script>document.write(new Date().getFullYear());</script>, Developed & Managed by Vhiron Technologies.</p>

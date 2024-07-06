@@ -1,0 +1,17 @@
+{
+    "name": "prakash/api",
+    "autoload": {
+        "psr-4": {
+            "Prakash\\Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "embededguy",
+            "email": "prakash.choudhary.extc@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
