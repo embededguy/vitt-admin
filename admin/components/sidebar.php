@@ -54,13 +54,13 @@
         </a>
         <ul class="collapse list-unstyled pl-4 w-100" id="company">
           <li class="nav-item sauth">
-            <a class="nav-link pl-3" href="./product_add.php">
+            <a class="nav-link pl-3" href="./company_add.php">
               <i class="fe fe-plus-square fe-16"></i>
               <span class="ml-1 item-text">Company Add</span>
             </a>
           </li>
           <li class="nav-item sauth">
-            <a class="nav-link pl-3" href="./product_list.php">
+            <a class="nav-link pl-3" href="./company_list.php">
               <i class="fe fe-eye fe-16"></i>
               <span class="ml-1 item-text">Company List</span>
             </a>

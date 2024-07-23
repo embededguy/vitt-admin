@@ -32,6 +32,16 @@
     $result = $conn->query($sql);
     $data = mysqli_fetch_assoc($result);
     $total_admins = $data["total_admins"];
+
+    $sql = "SELECT COUNT(*) AS total_users FROM users;";
+    $result = $conn->query($sql);
+    $data = mysqli_fetch_assoc($result);
+    $total_users = $data["total_users"];
+
+    $sql = "SELECT COUNT(*) AS total_scripts FROM scripts;";
+    $result = $conn->query($sql);
+    $data = mysqli_fetch_assoc($result);
+    $total_scripts = $data["total_scripts"];
   }
 ?>
 <!doctype html>
@@ -119,7 +129,7 @@
                       <div class="card-body">
                         <div class="row align-items-center">
                           <div class="col">
-                            <span class="h2 mb-4"><?php echo $total_company;?></span>
+                            <span class="h2 mb-4"><?php echo $total_scripts;?></span>
                             <p class="small text-muted mb-0">Total Company</p>
                             <span class="badge badge-pill badge-success"><span class="fe fe-16 fe-bar-chart-2 text-muted mb-0" style="color: black !important;"></span></span>
                           </div>
@@ -201,6 +211,22 @@
                           <div class="col">
                             <span class="h2 mb-0"><?php echo $total_admins;?></span>
                             <p class="small text-muted mb-0">Admins</p>
+                            <span class="badge badge-pill badge-warning"><span class="fe fe-16 fe-bar-chart text-muted mb-0" style="color: black !important;"></span></span>
+                          </div>
+                          <div class="col-auto">
+                            <span class="fe fe-32 fe-users text-muted mb-0"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-4">
+                    <div class="card shadow">
+                      <div class="card-body">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <span class="h2 mb-0"><?php echo $total_users;?></span>
+                            <p class="small text-muted mb-0">Total Users</p>
                             <span class="badge badge-pill badge-warning"><span class="fe fe-16 fe-bar-chart text-muted mb-0" style="color: black !important;"></span></span>
                           </div>
                           <div class="col-auto">

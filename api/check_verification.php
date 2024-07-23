@@ -1,7 +1,7 @@
 <?php
     require 'config/db.php';
 
-    $token = $_GET['token'];
+    $email = $_GET['email'];
     $current_time = date('Y-m-d H:i:s');
 
     $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -14,7 +14,7 @@
             if($user['email_verified'] == 0 ){
                 echo json_encode(['status' => 'error', 'message' => 'Email not verified']);
             }else if ($user['email_verified'] == 1) {
-                echo json_encode([ 'status' => 'success', 'message' => 'Email verified successfully']);
+                echo json_encode([ 'status' => 'success', 'message' => 'Email verified successfully','email_verified'=>true]);
             }
         } else {
             echo json_encode(['status' => 'error', 'message' => 'No email found']);
