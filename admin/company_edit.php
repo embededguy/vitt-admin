@@ -2,7 +2,7 @@
   include('config/db.php');
   if (!isset($_SESSION["user_logged_in"]) || $_SESSION["user_logged_in"] !== true) {
     // Redirect to the login page if not logged in
-    $customPath = "/admin/login.php";
+    $customPath = "/login.php";
     $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]".$customPath;
     header("Location: $actual_link");
   
@@ -25,8 +25,6 @@
       } else {
         $category = [];
       }
-
-
 
     }
 
@@ -193,17 +191,15 @@
                       <div class="form-row">
                         <div class="form-group col-md-3">
                           <label for="custom-money">Shares Listed: </label>
-                          <input value="<?= $product['issued_shares']?>" class="form-control" id="mrp" type="text" name="issued_shares" placeholder="No Of Shares Listed">
+                          <input value="<?= $product['issued_shares']?>" class="form-control" id="issuedShares" type="text" name="issued_shares" placeholder="No Of Shares Listed">
                         </div>      
                         <div class="form-group col-md-3">
                           <label for="sku">Latest Trading Price (LTP): </label>
                           <input value="<?= $product['ltp']?>" name="ltp" type="text" class="form-control" id="ltp" placeholder="LTP">
                         </div>
-
-
                         <div class="form-group col-md-6">
                           <label for="sku">Market Cap (Cr.): </label>
-                          <input name="sku" type="text" class="form-control" id="ltp" placeholder="LTP" disabled>
+                          <input name="sku" type="text" class="form-control" id="marketCap" placeholder="Market Cap" disabled>
                         </div>
                       </div>
                       <div class="form-row">
@@ -217,7 +213,7 @@
                         </div>
                         <div class="form-group col-md-3">
                           <label for="custom-money">Previous Close: </label>
-                          <input class="form-control input-money" id="price" type="text" name="previous_close" placeholder="Previous Close">
+                          <input value="<?= $product['prev_close']?>" class="form-control" id="price" type="text" name="previous_close" placeholder="Previous Close">
                         </div>
                         <div class="form-group col-md-3">
                           <label for="custom-money">ROE (Return On Equity): </label>
@@ -329,80 +325,7 @@
       gtag('js', new Date());
       gtag('config', 'UA-56159088-1');
     </script>
-    <script>
-
-        var editor = document.getElementById('editor');
-        if (editor){
-
-          var toolbarOptions = [ [{ 'font': [] }], [{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['bold', 'italic', 'underline', 'strike'], ['blockquote', 'code-block'], [{ 'header': 1 }, { 'header': 2 } ], [{ 'list': 'ordered' }, { 'list': 'bullet' } ], [{ 'script': 'sub' }, { 'script': 'super' } ], [{ 'indent': '-1' }, { 'indent': '+1' } ], [{ 'direction': 'rtl' }], [{ 'color': [] }, { 'background': [] } ], [{ 'align': [] }], ['clean'] ];
-         
-          var quill = new Quill(editor,{
-            modules:
-            {
-              toolbar: toolbarOptions,
-            },
-            theme: 'snow',
-            readOnly : false
-          });
-
-          quill.root.addEventListener('keydown', function(event) {
-              if (event.key === "'") {
-                  event.preventDefault();
-              }
-          });
-          quill.on('text-change', function() {
-              var quillData = quill.root.innerHTML;
-              document.getElementById('sdesc').value = quillData;
-          });        
-        }
-
-
-        var editor2 = document.getElementById('editor2');
-        if (editor2){
-
-          var toolbarOptions = [ [{ 'font': [] }], [{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['bold', 'italic', 'underline', 'strike'], ['blockquote', 'code-block'], [{ 'header': 1 }, { 'header': 2 } ], [{ 'list': 'ordered' }, { 'list': 'bullet' } ], [{ 'script': 'sub' }, { 'script': 'super' } ], [{ 'indent': '-1' }, { 'indent': '+1' } ], [{ 'direction': 'rtl' }], [{ 'color': [] }, { 'background': [] } ], [{ 'align': [] }], ['clean'] ];
-         
-          var quill2 = new Quill(editor2,{
-            modules:
-            {
-              toolbar: toolbarOptions,
-            },
-            theme: 'snow',
-            readOnly : false
-          });
-
-          quill2.root.addEventListener('keydown', function(event) {
-              if (event.key === "'") {
-                  event.preventDefault();
-              }
-          });
-
-          quill2.on('text-change', function() {
-              var quillData = quill2.root.innerHTML;
-              document.getElementById('ldesc').value = quillData;
-          });        
-      
-        }
-
-
-
-        function addSpec() {
-            // Clone the original code and append it below
-            const originalCode = document.getElementById('org-p');
-            const clone = originalCode.cloneNode(true);
-            document.getElementById('codeCon').appendChild(clone);
-        }
-
-        function removeSpec() {
-            // Remove the last added code
-            const codeContainer = document.getElementById('codeCon');
-            const codes = codeContainer.getElementsByClassName('row');
-
-            if (codes.length > 1) {
-                codeContainer.removeChild(codes[codes.length - 1]);
-            }
-        }
-    </script>
+    
     <script>
       let images = [];
 
@@ -521,6 +444,17 @@
       // }
       document.getElementById('uploadForm').addEventListener('submit', appendImagesToForm);
       document.getElementById('customFilex').addEventListener('change', previewImages);
+      document.getElementById('issuedShares').addEventListener('input', calculateMarketCap);
+      document.getElementById('ltp').addEventListener('input', calculateMarketCap);
+
+      function calculateMarketCap() {
+          const shares = parseFloat(document.getElementById('issuedShares').value.replace(/,/g, '')) || 0;
+          const ltp = parseFloat(document.getElementById('ltp').value.replace(/,/g, '')) || 0;
+          const marketCap = (shares * ltp).toFixed(2);
+
+          document.getElementById('marketCap').value = marketCap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      calculateMarketCap();
     </script>
   </body>
 </html>

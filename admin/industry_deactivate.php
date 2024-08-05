@@ -4,7 +4,7 @@
 
   if (!isset($_SESSION["user_logged_in"]) || $_SESSION["user_logged_in"] !== true) {
       // Redirect to the login page if not logged in
-      $customPath = "/admin/login.php";
+      $customPath = "/login.php";
       $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]".$customPath;
       header("Location: $actual_link");
   }else{
