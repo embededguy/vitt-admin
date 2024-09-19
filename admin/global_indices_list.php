@@ -7,7 +7,7 @@
       $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]".$customPath;
       header("Location: $actual_link");
   }else{
-    $sql = "SELECT * FROM scripts";
+    $sql = "SELECT * FROM global_indices";
     $result = $conn->query($sql); 
     if ($result->num_rows > 0) {
       // Fetch ALL USERS
@@ -18,7 +18,6 @@
     } else {
       $spec = [];
     }
-
     $conn->close();
   }
 
@@ -31,7 +30,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="./assets/images/favicon.png">
-    <title>Vitt - All Companies</title>
+    <title>Vitt App - All Global Indices</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
@@ -59,15 +58,6 @@
       }
     </style>
     <script>
-      function formatNumberIndian(num) {
-          const [integerPart, decimalPart] = num.split(".");
-          const lastThreeDigits = integerPart.slice(-3);
-          const otherDigits = integerPart.slice(0, -3);
-          const formattedOtherDigits = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
-          const formattedNumber = otherDigits ? formattedOtherDigits + "," + lastThreeDigits : lastThreeDigits;
-          return decimalPart ? formattedNumber + "." + decimalPart : formattedNumber;
-      }
-
       document.addEventListener("DOMContentLoaded", function() {
         // Hide the loading screen
         var loadingScreen = document.getElementById("loadingScreen");
@@ -89,8 +79,8 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="mb-2 page-title">All Listed N.S.E Companies</h2>
-              <p class="card-text">Helps, you view all Company + Activate / Deactivate + Edit</p>
+              <h2 class="mb-2 page-title">All Global Indices</h2>
+              <p class="card-text">Helps, you view all Indices + Activate / Deactivate + Edit</p>
               <div class="row my-4">
 
                 <!-- Small table -->
@@ -108,12 +98,10 @@
                           <tr>
                             <th>#</th>
                             <th>Created At</th>
+                            <th>Image</th>
                             <th>Code</th>
-                            <th>Symbol</th>
                             <th>Name</th>
-                            <th>Segment</th>
-                            <th>LTP</th>
-                            <th>1D Change</th>
+                            <th>Country</th>
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
@@ -123,29 +111,15 @@
                             <tr>
                               <td><?php echo $user['id']; ?></td>
                               <td><?php echo $user['createdAt']; ?></td>
-                              <td><?php echo $user['script_code']; ?></td>
-                              <td><?php echo $user['ticker_symbol']; ?></td>
-                              <td><?php echo $user['company_name']; ?></td>
-                              <td><?php echo $user['segment']; ?></td>
-                              <td>₹<script>document.write(formatNumberIndian("<?= $user['ltp']; ?>"))</script>/-</td> 
-                              <td><?php 
-                                  if($user['prev_close']){
-                                    $change = (float)$user['ltp'] - (float)$user['prev_close'];
-                                    if((float)$user['prev_close'] !== 0.00){
-                                      $change_percent = (((float)$user['ltp'] - (float)$user['prev_close'])/(float)$user['prev_close'])*100;
-                                      $change = number_format($change, 2);
-                                      $change_percent = number_format($change_percent, 2);                                      
-                                      if($change < 0){
-                                        echo "<span class='text text-danger'>$change ($change_percent %)</span>";                                      
-                                      }else{
-                                        echo "<span class='text text-success'>+$change (+$change_percent %)</span>";
-                                      }
-                                    }
-                                  }
+                              <?php if(empty($_SERVER['HTTPS'])):?>
+                                <td><img alt="No Image" src="../.<?= $user['imagepath']?>" width="50" style="border: 1px solid grey;border-radius: 10px;"></td>
+                              <?php else:?>
+                                <td><img alt="No Image" src="https://vittapp.in/<?= $user['imagepath']?>" width="50" style="border: 1px solid grey;border-radius: 10px;"></td>
+                              <?php endif;?>
 
-                                ?>
-                              
-                              </td>                           
+                              <td><?php echo $user['symbol']; ?></td>
+                              <td><?php echo $user['name']; ?></td>
+                              <td><?php echo $user['country']; ?></td>
                               <td>
                                 <?php if($user['status'] == '1'):?>
                                   <button class="btn btn-sm btn-success" href="">Active</button>
@@ -157,15 +131,15 @@
                                 <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <span class="text-muted sr-only">Action</span>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                  <a class="dropdown-item" href="./company_edit.php?id=<?php echo $user['id'];?>">Edit</a>
+<!--                                 <div class="dropdown-menu dropdown-menu-right">
+                                  <a class="dropdown-item" href="./basic_industry_edit.php?id=<?php echo $user['id'];?>">Edit</a>
                                   <?php if($user['status'] == '1'):?>
-                                    <a class="dropdown-item" href="./company_deactivate.php?id=<?php echo $user['id'];?>">Deactivate</a>
+                                    <a class="dropdown-item" href="./basic_industry_deactivate.php?id=<?php echo $user['id'];?>">Deactivate</a>
                                   <?php else:?>
-                                    <a class="dropdown-item" href="./company_activate.php?id=<?php echo $user['id'];?>">Activate</a>
+                                    <a class="dropdown-item" href="./basic_industry_activate.php?id=<?php echo $user['id'];?>">Activate</a>
                                   <?php endif;?>
                                 </div>
-                              </td>
+ -->                              </td>
                             </tr>
                           <?php endforeach; ?>
                         </tbody>
@@ -197,7 +171,6 @@
     <script src='js/dataTables.bootstrap4.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>    
     <script>
-      
       function exportToExcel() {
           // Fetch table data
           var table = document.getElementById('dataTable-1');
@@ -240,8 +213,8 @@
           $('#dataTable-1').DataTable({
               autoWidth: true,
               lengthMenu: [
-                  [20, 40, 80, -1],
-                  [20, 40, 80, "All"]
+                  [16, 32, 64, -1],
+                  [16, 32, 64, "All"]
               ],
           });
 
@@ -257,6 +230,5 @@
       });
     </script>
     <script src="js/apps.js"></script>
-    
   </body>
 </html>

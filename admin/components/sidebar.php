@@ -60,6 +60,12 @@
             </a>
           </li>
           <li class="nav-item sauth">
+            <a class="nav-link pl-3" href="./company_mapper.php">
+              <i class="fe fe-trello fe-16"></i>
+              <span class="ml-1 item-text">Company Mapper</span>
+            </a>
+          </li>
+          <li class="nav-item sauth">
             <a class="nav-link pl-3" href="./company_list.php">
               <i class="fe fe-eye fe-16"></i>
               <span class="ml-1 item-text">Company List</span>
@@ -159,33 +165,13 @@
         </a>
         <ul class="collapse list-unstyled pl-4 w-100" id="g-indices">
           <li class="nav-item sauth">
-            <a class="nav-link pl-3" href="./admin_add_employee.php">
+            <a class="nav-link pl-3" href="./global_indice_add.php">
               <i class="fe fe-plus-square fe-16"></i>
               <span class="ml-1 item-text">Add Indice</span>
             </a>
           </li>
           <li class="nav-item sauth">
-            <a class="nav-link pl-3" href="./admin_list_employee.php">
-              <i class="fe fe-eye fe-16"></i>
-              <span class="ml-1 item-text">List All Indices</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a href="#i-indices" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-          <i class="fe fe-star fe-16"></i>
-          <span class="ml-3 item-text">Indian Indices</span><span class="sr-only">(current)</span>
-        </a>
-        <ul class="collapse list-unstyled pl-4 w-100" id="i-indices">
-          <li class="nav-item sauth">
-            <a class="nav-link pl-3" href="./admin_add_employee.php">
-              <i class="fe fe-plus-square fe-16"></i>
-              <span class="ml-1 item-text">Add Indice</span>
-            </a>
-          </li>
-          <li class="nav-item sauth">
-            <a class="nav-link pl-3" href="./admin_list_employee.php">
+            <a class="nav-link pl-3" href="./global_indices_list.php">
               <i class="fe fe-eye fe-16"></i>
               <span class="ml-1 item-text">List All Indices</span>
             </a>
@@ -193,7 +179,31 @@
         </ul>
       </li>
     </ul>
-
+    <p class="text-muted nav-heading mt-4 mb-1" id="h-crude">
+      <span>Notification Scheduler</span>
+    </p>
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+      <li class="nav-item dropdown">
+        <a href="#g-crude" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+          <i class="fe fe-bell fe-16"></i>
+          <span class="ml-3 item-text">Notification</span><span class="sr-only">(current)</span>
+        </a>
+        <ul class="collapse list-unstyled pl-4 w-100" id="g-crude">
+          <li class="nav-item sauth">
+            <a class="nav-link pl-3" href="./instant_push.php">
+              <i class="fe fe-plus-square fe-16"></i>
+              <span class="ml-1 item-text">Instant Push</span>
+            </a>
+          </li>
+          <li class="nav-item sauth">
+            <a class="nav-link pl-3" href="./schedule_push.php">
+              <i class="fe fe-plus-square fe-16"></i>
+              <span class="ml-1 item-text">Schedule Push</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
     <p class="text-muted nav-heading mt-4 mb-1" id="h-blog">
       <span>Blog Management</span>
     </p>

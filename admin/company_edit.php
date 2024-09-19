@@ -25,15 +25,8 @@
       } else {
         $category = [];
       }
-
     }
-
   }
-
-  
-
-  
-
 ?>
 
 <!doctype html>
@@ -122,13 +115,13 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="page-title">Company Details Edit</h2>
-              <p class="lead text-muted">Helps, you edit you a company details.</p>
+              <h2 class="page-title">Company Details Add</h2>
+              <p class="lead text-muted">Helps, you add a new company details.</p>
             <div class="row">
                 <div class="col-md-12">
                   <div class="card shadow mb-4">
                     <div class="card-header">
-                      <strong class="card-title">EDIT PRODUCT DETAILS</strong>
+                      <strong class="card-title">ADD COMPANY DETAILS</strong>
                     </div>
                     <?php
                       if (isset($_GET['success']) && $_GET['success'] == 1) {
@@ -142,7 +135,7 @@
                       }
                     ?>
                     <div class="card-body">
-                    <form id="uploadForm" action="./controller/process_add_product.php" method="POST">
+                    <form id="uploadForm" action="./controller/process_company_add.php" method="POST">
                       <div class="form-row">
                         <div class="form-group col-md-4">
                           <label for="customFilex">Upload Images: </label>
@@ -168,15 +161,20 @@
                           <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                           <input type="hidden" id="sdesc" name="sdesc" value="">
                           <input type="hidden" id="ldesc" name="ldesc" value="">               
-                          <input value="<?= $product['company_name']?>" name="name" type="text" class="form-control" id="inputPassword4" placeholder="Name">
+                          <input name="name" type="text" class="form-control" id="inputPassword4" placeholder="Name" value="<?= $product['company_name']?>" >
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-2">
                           <label for="inputPassword4">Ticker Symbol: </label>
-                          <input value="<?= $product['ticker_symbol']?>" name="symbol" type="text" class="form-control" id="inputPassword4" placeholder="Ticker Symbol">
+                          <input name="symbol" type="text" class="form-control" id="inputPassword4" placeholder="Ticker Symbol" value="<?= $product['ticker_symbol']?>">
                         </div>
+                        <div class="form-group col-md-2">
+                          <label for="inputPassword4">Script Code: </label>
+                          <input name="script_code" type="text" class="form-control" id="inputPassword4" placeholder="Code" value="<?= $product['script_code']?>">
+                        </div>
+
                         <div class="form-group col-md-4">
                           <label for="parentCategory">Select Basic Industry: </label>
-                          <select name="brand" class="form-control" name="basic_industry" id="parentCategory" required>
+                          <select class="form-control" name="basic_industry" id="parentCategory" required>
                             <option value="0" selected> -- Select Industry -- </option>
                               <?php
                                 foreach ($category as $spec) {
@@ -190,56 +188,74 @@
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-3">
-                          <label for="custom-money">Shares Listed: </label>
-                          <input value="<?= $product['issued_shares']?>" class="form-control" id="issuedShares" type="text" name="issued_shares" placeholder="No Of Shares Listed">
+                          <label for="custom-money">Shares Listed (Cr.): </label>
+                          <input class="form-control" id="issuedShares" type="text" name="issued_shares" placeholder="No Of Shares Listed" value="<?= $product['issued_shares']?>">
                         </div>      
                         <div class="form-group col-md-3">
                           <label for="sku">Latest Trading Price (LTP): </label>
-                          <input value="<?= $product['ltp']?>" name="ltp" type="text" class="form-control" id="ltp" placeholder="LTP">
+                          <input name="ltp" type="text" class="form-control" id="ltp" placeholder="LTP" value="<?= $product['ltp']?>">
                         </div>
                         <div class="form-group col-md-6">
                           <label for="sku">Market Cap (Cr.): </label>
-                          <input name="sku" type="text" class="form-control" id="marketCap" placeholder="Market Cap" disabled>
+                          <input name="mcap" type="text" class="form-control" id="marketCap" placeholder="Market Cap" disabled>
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-3">
                           <label for="custom-money">52 Week High Price: </label>
-                          <input value="<?= $product['52_week_high']?>" class="form-control" id="mrp" type="text" name="52weekhigh" placeholder="52 Week High">
+                          <input class="form-control" type="text" name="52weekhigh" placeholder="52 Week High" value="<?= $product['52_week_high']?>">
                         </div>      
                         <div class="form-group col-md-3">
                           <label for="custom-money">52 Week Low Price: </label>
-                          <input value="<?= $product['52_week_low']?>" class="form-control" id="price" type="text" name="52weeklow" placeholder="52 Week Low">
+                          <input class="form-control" type="text" name="52weeklow" placeholder="52 Week Low" value="<?= $product['52_week_low']?>">
                         </div>
                         <div class="form-group col-md-3">
                           <label for="custom-money">Previous Close: </label>
-                          <input value="<?= $product['prev_close']?>" class="form-control" id="price" type="text" name="previous_close" placeholder="Previous Close">
+                          <input class="form-control" type="text" name="previous_close" placeholder="Previous Close" value="<?= $product['prev_close']?>">
                         </div>
                         <div class="form-group col-md-3">
                           <label for="custom-money">ROE (Return On Equity): </label>
-                          <input value="<?= $product['roe']?>" class="form-control input-money" id="price" type="text" name="roe" placeholder="ROE">
+                          <input class="form-control" type="text" name="roe" placeholder="ROE" value="<?= $product['roe']?>">
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-3">
                           <label for="custom-money">Debt to Equity: </label>
-                          <input class="form-control" id="mrp" type="text" name="d2e" placeholder="No Of Shares Listed">
+                          <input class="form-control" type="text" name="debttoequity" placeholder="No Of Shares Listed"  value="<?= $product['debttoequity']?>">
                         </div>      
                         <div class="form-group col-md-3">
                           <label for="custom-money">Dividend Yield (%): </label>
-                          <input class="form-control" id="price" type="text" name="d_yield" placeholder="Dividend Yield">
+                          <input class="form-control" type="text" name="d_yield" placeholder="Dividend Yield" value="<?= $product['div_yield']?>">
                         </div>
                         <div class="form-group col-md-2">
                           <label for="custom-money">Tick Size: </label>
-                          <input class="form-control" id="price" type="text" name="tick_size" placeholder="Tick Size">
+                          <input class="form-control" type="text" name="tick_size" placeholder="Tick Size" value="<?= $product['ticker_size']?>">
                         </div>
                         <div class="form-group col-md-2">
                           <label for="custom-money">Book Value: </label>
-                          <input class="form-control" id="price" type="text" name="tick_size" placeholder="Book Value">
+                          <input class="form-control" type="text" name="book_value" placeholder="Book Value" value="<?= $product['book_value']?>">
                         </div>
                         <div class="form-group col-md-2">
                           <label for="custom-money">Face Value: </label>
-                          <input class="form-control" id="price" type="text" name="tick_size" placeholder="Face Value">
+                          <input class="form-control" type="text" name="face_value" placeholder="Face Value" value="<?= $product['face_value']?>">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-3">
+                          <label for="custom-money">Industry P/E: </label>
+                          <input class="form-control" type="text" name="ipe" placeholder="Industry P/E" value="<?= $product['ipe']?>" required>
+                        </div>      
+                        <div class="form-group col-md-3">
+                          <label for="custom-money">P/E Ratio(TTM): </label>
+                          <input class="form-control" type="text" name="pe" placeholder="P/E" value="<?= $product['pe_ratio']?>" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="custom-money">Earning Per Share: </label>
+                          <input class="form-control" type="text" name="eps" placeholder="EPS" value="<?= $product['eps']?>" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="custom-money">P/B Ratio: </label>
+                          <input class="form-control" type="text" name="pb" placeholder="P/B" value="<?= $product['pb_ratio']?>" required>
                         </div>
                       </div>
                       <br/>

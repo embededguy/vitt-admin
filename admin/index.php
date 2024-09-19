@@ -42,6 +42,11 @@
     $result = $conn->query($sql);
     $data = mysqli_fetch_assoc($result);
     $total_scripts = $data["total_scripts"];
+
+    $sql = "SELECT COUNT(*) AS total_indices FROM global_indices;";
+    $result = $conn->query($sql);
+    $data = mysqli_fetch_assoc($result);
+    $total_indices = $data["total_indices"];
   }
 ?>
 <!doctype html>
@@ -89,6 +94,25 @@
         align-items: center;
         z-index: 9999; /* Ensure it's above other content */
       }
+       ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .api-status {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .api-status span {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        .active {
+            color: green;
+        }
+        .inactive {
+            color: red;
+        }
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
@@ -209,6 +233,22 @@
                       <div class="card-body">
                         <div class="row align-items-center">
                           <div class="col">
+                            <span class="h2 mb-0"><?php echo $total_indices;?></span>
+                            <p class="small text-muted mb-0">Total Global Indices</p>
+                            <span class="badge badge-pill badge-warning"><span class="fe fe-16 fe-bar-chart text-muted mb-0" style="color: black !important;"></span></span>
+                          </div>
+                          <div class="col-auto">
+                            <span class="fe fe-32 fe-users text-muted mb-0"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-4">
+                    <div class="card shadow">
+                      <div class="card-body">
+                        <div class="row align-items-center">
+                          <div class="col">
                             <span class="h2 mb-0"><?php echo $total_admins;?></span>
                             <p class="small text-muted mb-0">Admins</p>
                             <span class="badge badge-pill badge-warning"><span class="fe fe-16 fe-bar-chart text-muted mb-0" style="color: black !important;"></span></span>
@@ -236,8 +276,14 @@
                       </div>
                     </div>
                   </div>
+                  
                 </div> <!-- end section -->
-              
+                <div class="row">
+                  <div class="col">
+                    <h4 class="mb-2 page-title"></h4>
+                  </div>
+                </div>
+                <br/>
                 <div class="row">
                   <div class="col-md-12">
                     <p class="mt-5 mb-3 text-muted">© <script>document.write(new Date().getFullYear());</script>, Developed & Managed by Vhiron Technologies.</p>
@@ -284,158 +330,40 @@
     
     <script src="js/apps.js"></script>
     <script>
-      var radialbarWidgetChart, radialbarWidgetOptions = {
-        series: [0],
-        chart: {
-            height: 120,
-            type: "radialBar"
-        },
-        theme: {
-            mode: colors.chartTheme
-        },
-        plotOptions: {
-            radialBar: {
-                hollow: {
-                    size: "70%"
-                },
-                track: {
-                    background: colors.borderColor
-                },
-                dataLabels: {
-                    show: !0,
-                    name: {
-                        fontSize: "0.875rem",
-                        fontWeight: 400,
-                        offsetY: -10,
-                        show: !1,
-                        color: colors.mutedColor,
-                        fontFamily: base.defaultFontFamily
-                    },
-                    value: {
-                        formatter: function(e) {
-                            return parseInt(e)
-                        },
-                        fontSize: "1.53125rem",
-                        fontWeight: 700,
-                        fontFamily: base.defaultFontFamily,
-                        offsetY: 10,
-                        show: !0,
-                        color: colors.headingColor
-                    },
-                    total: {
-                        show: !1,
-                        fontSize: "0.875rem",
-                        fontWeight: 400,
-                        offsetY: -10,
-                        label: "Percent",
-                        color: colors.mutedColor,
-                        fontFamily: base.defaultFontFamily
-                    }
-                }
-            }
-        },
-        fill: {
-            type: "gradient",
-            gradient: {
-                shade: "light",
-                type: "diagonal2",
-                shadeIntensity: .2,
-                gradientFromColors: [extend.primaryColorLighter],
-                gradientToColors: [base.primaryColor],
-                inverseColors: !0,
-                opacityFrom: 1,
-                opacityTo: 1,
-                stops: [20, 100]
-            }
-        },
-        stroke: {
-            lineCap: "round"
-        }
-    },
-    radialbarWidget = document.querySelector("#radialbarWidget");
-    radialbarWidget && (radialbarWidgetChart = new ApexCharts(radialbarWidget, radialbarWidgetOptions)).render(); 
+      const apis = [
+            { name: 'Market Status', url: 'https://www.nseindia.com/api/marketStatus', method: 'GET' },
+            { name: 'Stock Live Price', url: 'https://www.google.com/finance/quote/NMDC:NSE?hl=en', method: 'GET' },
+            { name: 'Nifty Movers', url: 'https://portal.tradebrains.in/api/index/NIFTY/movers/gainers?page=1&per_page=25&by=percent&ascending=false', method: 'GET' }
+        ];
 
-    //
-    var radialbarChart, radialbarOptions = {
-        series: [0],
-        chart: {
-            height: 200,
-            type: "radialBar"
-        },
-        plotOptions: {
-            radialBar: {
-                hollow: {
-                    size: "75%"
-                },
-                track: {
-                    background: colors.borderColor
-                },
-                dataLabels: {
-                    show: !0,
-                    name: {
-                        fontSize: "0.875rem",
-                        fontWeight: 400,
-                        offsetY: -10,
-                        show: !0,
-                        color: colors.mutedColor,
-                        fontFamily: base.defaultFontFamily
-                    },
-                    value: {
-                        formatter: function(e) {
-                            return parseInt(e)
-                        },
-                        color: colors.headingColor,
-                        fontSize: "1.53125rem",
-                        fontWeight: 700,
-                        fontFamily: base.defaultFontFamily,
-                        offsetY: 5,
-                        show: !0
-                    },
-                    total: {
-                        show: !0,
-                        fontSize: "0.875rem",
-                        fontWeight: 400,
-                        offsetY: -10,
-                        label: "Percent",
-                        color: colors.mutedColor,
-                        fontFamily: base.defaultFontFamily
-                    }
-                }
-            }
-        },
-        fill: {
-            type: "gradient",
-            gradient: {
-                shade: "light",
-                type: "diagonal2",
-                shadeIntensity: .2,
-                gradientFromColors: [extend.primaryColorLighter],
-                gradientToColors: [extend.primaryColorDark],
-                inverseColors: !0,
-                opacityFrom: 1,
-                opacityTo: 1,
-                stops: [20, 100]
-            }
-        },
-        stroke: {
-            lineCap: "round"
-        },
-        labels: ["CPU"]
-    },
-    radialbar = document.querySelector("#radialbar");
-    radialbar && (radialbarChart = new ApexCharts(radialbar, radialbarOptions)).render(); 
-    </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
+        const apiList = document.getElementById('apiList');
 
-      function gtag()
-      {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'UA-56159088-1');
+        apis.forEach(api => {
+            const listItem = document.createElement('li');
+            listItem.className = 'api-status';
+            listItem.innerText = `Checking: ${api.name}...`;
+
+            const options = {
+                method: api.method,
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' }
+            };
+
+            fetch(api.url, options)
+                .then(response => {
+                    if (response.ok || response.type === 'opaque') {
+                        listItem.innerHTML = `<span class="active"> ✅ </span><strong>${api.name}</strong>`;
+                    } else {
+                        listItem.innerHTML = `<span class="inactive"> ❌ </span><strong>${api.name}</strong>`;
+                    }
+                })
+                .catch(error => {
+                    listItem.innerHTML = `<span class="inactive"> ❌ </span><strong>${api.name}</strong>`;
+                });
+
+            apiList.appendChild(listItem);
+        });
     </script>
+    
   </body>
 </html>

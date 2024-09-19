@@ -1,27 +1,30 @@
 <?php
   include('config/db.php');
+  include('config/auth.php');
 
   if (!isset($_SESSION["user_logged_in"]) || $_SESSION["user_logged_in"] !== true) {
       // Redirect to the login page if not logged in
-      $customPath = "/login.php";
+      $customPath = "/admin/login.php";
       $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]".$customPath;
       header("Location: $actual_link");
   }else{
-      $sql="SELECT * FROM industry_index WHERE status = 1;";
-      $result = $conn->query($sql); 
-      if ($result->num_rows > 0) {
-        // Fetch ALL USERS
-        $category = [];
-        while ($row = $result->fetch_assoc()) {
-          $category[] = $row;
-        }
-      } else {
-        $category = [];
-      }
+      
+  }
+  if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name  = $_POST['name'];
+    $message = $_POST['description'];
+
+    $sql = "INSERT INTO notification (title, message) VALUES('$name','$message')";
+
+    if($conn->query($sql) === TRUE){
+      header("Location: ./instant_push.php");
+    }else{
+      header("Location: ./instant_push.php");
+    }
   }
 
   if (!isset($_SESSION['csrf_token'])) {
-      $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
   }
 
 ?>
@@ -33,7 +36,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="./assets/images/favicon.png">
-    <title>Vitt - Admin Panel</title>
+    <title>Vitt App - Create A Instant Push Notification</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
@@ -86,18 +89,18 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-            <h2 class="page-title">Add Basic Industry</h2>
-            <p class="lead text-muted">Basic Industry: This is a micro level classification to indicate the core business activities carried on by the company</p>
+            <h2 class="page-title">Create Push Notification</h2>
+            <p class="lead text-muted">Helps, you create a push notificiation.</p>
             <div class="row">
                 <div class="col-md-12">
                   <div class="card shadow mb-4">
                     <div class="card-header">
-                      <strong class="card-title">ADD BASIC INDUSTRY FORM</strong>
+                      <strong class="card-title">CREATE PUSH NOTIFICATION</strong>
                     </div>
                     <?php
                       if (isset($_GET['success']) && $_GET['success'] == 1) {
                         echo '<div class="alert alert-success" style="text-align:center" role="alert">
-                                <strong>Success!</strong> Added Successfully.
+                                <strong>Success! </strong> Created Successfully.
                               </div>';
                       }elseif(isset($_GET['success']) && $_GET['success'] == 0){
                         echo '<div class="alert alert-danger" style="text-align:center" role="alert">
@@ -106,36 +109,29 @@
                       }
                     ?>
                     <div class="card-body">
-                      <form class="form" action="./controller/process_basic_industry_add.php" method="POST">
+                      <form class="form" action="" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
-                          <div class="form-group col-md-4">
-                            <label for="inputPassword4">Basic Industry Name: </label>
-                            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">               
-                            <input name="name" type="text" class="form-control" id="inputPassword4" placeholder="Name" required>
-                          </div>
-                          <div class="form-group col-md-4">
-                            <label for="inputPassword4">Basic Industry Code: </label>
-                            <input name="code" type="text" class="form-control" id="inputPassword4" placeholder="Code" required>
-                          </div>
-                          <div class="form-group col-md-4">
-                            <label for="parentCategory">Parent Industry: </label>
-                            <select class="form-control" name="parentCategory" id="parentCategory" required>
-                              <option value="0" selected> -- Parent Industry -- </option>
-                                <?php
-                                    foreach ($category as $spec) {
-                                        $id = $spec['id'];
-                                        $name = $spec['name'];
-                                        echo "<option value='$id'>$name</option>";
-                                    }
-                                ?>
-                            </select>
-                          </div> <!-- form-group -->
                           <div class="form-group col-md-6">
-                            <label for="desc">Description: </label>
+                            <label for="inputPassword4">Notification Title: </label>
+                            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">               
+                            <input name="name" type="text" class="form-control" id="inputPassword4" placeholder="Title">
+                          </div>
+                          
+                          <div class="form-group col-md-6">
+                            <label for="desc">Message: </label>
                             <textarea id="desc" name="description" class="form-control" placeholder="Take A Note Here" style="height:150px"></textarea>
                           </div> <!-- form-group -->
                         </div>
-                        <br/>  
+                        <br/> 
+                        <!-- <div class="form-row justify-content-center">
+                          <div class="form-group col-md-12">                            
+                            <br/>
+                            <h4 style="text-align:center;">** IMAGE PREVIEW **</h4>
+                            <p style="text-align:center;" class="lead text-muted">DIMENSION OF 370x270 ONLY</p>
+                            <div id="imageSection" style="display:flex;justify-content: center;gap: 10px;"></div>
+                          </div>
+                        </div> -->
+                        <br/>
                         <button type="submit" class="btn btn-primary mb-2">Submit</button>
                       </form>
                     </div>
@@ -185,7 +181,36 @@
     <script src='js/uppy.min.js'></script>
     <script src='js/quill.min.js'></script>
     
-    <script src="js/apps.js"></script>
     
+    <script src="js/apps.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-56159088-1');
+
+      // Display selected images before submitting the form
+      const imageSection = document.getElementById('imageSection');
+      const inputImages = document.getElementById('customFilex');
+
+      inputImages.addEventListener('change', (event) => {
+        imageSection.innerHTML = ''; // Clear previous previews
+
+        for (const file of event.target.files) {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.className = 'img-fluid';
+          img.style.borderRadius = "10px";
+          img.style.border = "1px solid grey"
+          imageSection.appendChild(img);
+        }
+      });
+    </script>
   </body>
 </html>
