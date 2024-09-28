@@ -96,7 +96,8 @@ if($result->num_rows > 0){
             $high = $data["data"][0]["High1Yr"];
             $low  = $data["data"][0]["Low1Yr"];
             $ltp  = $data["data"][0]["Ltp"];
-
+            $mcap = $data["data"][0]["Mcap"];
+            
             $sql = "UPDATE scripts SET  
                     roe='$roe',
                     eps='$eps',
@@ -108,7 +109,8 @@ if($result->num_rows > 0){
                     div_yield='$div_yield',
                     52_week_high='$high',
                     52_week_low='$low',
-                    ltp='$ltp'
+                    ltp='$ltp',
+                    mcap='$mcap'
                     WHERE script_code='$scriptcode'";
             
             // Print the SQL query for debugging

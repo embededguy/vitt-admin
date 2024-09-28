@@ -155,7 +155,7 @@
           <div class="row justify-content-center">
             <div class="col-12">
               <h2 class="page-title">Company Mapper</h2>
-              <p class="lead text-muted">Helps, you add a new company details.</p>
+              <p class="lead text-muted">Helps, you add a new companies in csv format.</p>
             <div class="row">
                 <div class="col-md-12">
                   <div class="card shadow mb-4">
@@ -205,14 +205,12 @@
     </div> <!-- .wrapper -->
     <script>
         function dataParse(event){
-            // event.preventDefault();
-            var data = document.getElementById("s-data").value;
-            const rows = data.split('\n');
-            const parsedData = rows.map(row => row.split('|'));
-            const filteredData = parsedData.filter(row => row[1].includes('-EQ'));
-            document.getElementById("t_comp").innerHTML = filteredData.length;
-
-            console.log(filteredData);   
+          // event.preventDefault();
+          var data = document.getElementById("s-data").value;
+          const rows = data.split('\n');
+          const parsedData = rows.map(row => row.split('|'));
+          const filteredData = parsedData.filter(row => row[1].includes('-EQ'));
+          // document.getElementById("t_comp").innerHTML = filteredData.length;
         }
     </script>
     <script src="js/jquery.min.js"></script>

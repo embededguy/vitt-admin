@@ -25,7 +25,7 @@
             <li><a href="tel: ">+91 92223-07880</a></li>
           </ul>
           <ul class="social_media">
-            <li><a href="https://instagram.com/"><i class="icofont-instagram"></i></a></li>
+            <li><a href="https://instagram.com/vittapp.in"><i class="icofont-instagram"></i></a></li>
             <li><a href="#"><i class="icofont-linkedin"></i></a></li>
             <li><a href="#"><i class="icofont-twitter"></i></a></li>
             <li><a href="https://youtube.com"><i class="icofont-youtube"></i></a></li>
