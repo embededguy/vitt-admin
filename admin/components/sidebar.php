@@ -215,13 +215,13 @@
         </a>
         <ul class="collapse list-unstyled pl-4 w-100" id="blog">
           <li class="nav-item sauth">
-            <a class="nav-link pl-3" href="./admin_add_employee.php">
+            <a class="nav-link pl-3" href="./blog_add.php">
               <i class="fe fe-plus-square fe-16"></i>
               <span class="ml-1 item-text">Add Blog</span>
             </a>
           </li>
           <li class="nav-item sauth">
-            <a class="nav-link pl-3" href="./admin_list_employee.php">
+            <a class="nav-link pl-3" href="./blog_list.php">
               <i class="fe fe-eye fe-16"></i>
               <span class="ml-1 item-text">List All Blogs</span>
             </a>

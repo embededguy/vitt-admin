@@ -4,16 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name='keywords' content=''>
-  <meta name='description' content=''>
 
-  <meta name='og:title' content='Vitt App - Your Finance Partner!!'>
-  <meta name='og:image' content='images/vitt.png'>
-  <meta name='og:url' content='https://vittapp.in'>
-  <meta name='og:site_name' content='Vitt App'>
+  <meta name='keywords' content='Vitt App, Stock Market Insights, Live Prices, Portfolio Watch, FII/DII Data, Corporate Announcements, Stock Market News, Candlestick Analytics, Investment Tools, Finance App'>
+  <meta name='description' content='Vitt App provides real-time stock market data, portfolio management, corporate announcements, market news, candlestick analytics, and much more to help you make smarter investment decisions.'>
+  <!--  -->
+  <meta name='og:title' content='Vitt App - Your Finance Partner | Real-Time Market Data | Stock Market News | Stock Price Tracking | Portfolio Insights, and More'>
+  <meta name='og:image' content='https://vittapp.in/images/vitt-logo-270.png'>
+  <meta name='og:url' content='https://vittapp.in/index.php'>
+  <meta name='og:site_name' content='Vitt App - Your Finance Partner!!'>
   <meta name='og:description' content=''>
 
-  <title>Vitt App - Your Finance Partner!!</title>
+  <title>Vitt App - Your Finance Partner | Real-Time Market Data | Stock Market News | Stock Price Tracking | Portfolio Insights, and More</title>
   <!-- icofont-css-link -->
   <link rel="stylesheet" href="css/icofont.min.css">
   <!-- Owl-Carosal-Style-link -->
@@ -29,6 +30,14 @@
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KK3VGJNM');
+  </script>
+  <!-- End Google Tag Manager -->
 </head>
 
 <body>
@@ -49,47 +58,44 @@
             <!-- typed text -->
             <div class="type-wrap">
               <!-- add static words/sentences here (i.e. text that you don't want to be removed)-->
-              <span id="typed" style="white-space:pre;" class="typed">
-              </span>
+              <span id="typed" style="white-space:pre;" class="typed"></span>
             </div>
             <!-- h1 -->
-            <h1>Stay Ahead with <span>Market News</span> and <span>Investment Management.</span></h1>
+            <h1>Stay Ahead with <span>Real-Time Market News</span> and <span>Portfolio Tracking</span></h1>
             <!-- p -->
             <p>
-              Track your portfolio, get the latest market insights, and manage your investments effortlessly.
+              Track live stock prices, get the latest market updates, and effortlessly manage your portfolio with insightful analytics on Vitt App.
             </p>
           </div>
 
           <!-- users -->
-          <div class="used_app">
+          <div class="used_app" style="display: flex;gap: 10px;">
             <ul>
-              <li><img src="images/banavt1.png" alt="image"></li>
-              <li><img src="images/banavt2.png" alt="image"></li>
-              <li><img src="images/banavt3.png" alt="image"></li>
               <li>
                 <a href="#" class="popup-youtube play-button"
-                  data-url="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1" data-toggle="modal" data-target="#myModal" title="XJj2PbenIsU"><img src="images/play.svg" alt="img"></a>
+                  data-url="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1" data-toggle="modal" data-target="#myModal" title="Watch Vitt App Demo"><img src="images/play.svg" alt="img"></a>
               </li>
             </ul>
-            <h3>12M + Active users</h3>
-            <p>The best application to manage your <br>Portfolio & Assets</p>
+            <div>
+              <h3>1K+ Active Users</h3>
+              <p>Join thousands of users managing their investments and tracking market movements with Vitt App.</p>
+            </div>
           </div>
 
           <!-- app buttons -->
           <ul class="app_btn">
             <li>
               <a href="#">
-                <img class="blue_img" src="images/googleplay.png" alt="image">
+                <img class="blue_img" src="images/googleplay.png" alt="Download on Google Play">
               </a>
             </li>
             <li>
               <a href="#">
-                <img class="blue_img" src="images/appstorebtn.png" alt="image">
+                <img class="blue_img" src="images/appstorebtn.png" alt="Download on App Store">
               </a>
             </li>
           </ul>
         </div>
-
         <!-- banner slides start -->
         <div class="col-lg-6 col-md-12" >
           <div class="banner_slider">
@@ -166,20 +172,15 @@
           <!-- task text -->
           <div class="task_text">
             <div class="section_title white_text" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-              <span class="title_badge">Unique Features</span>
+              <span class="title_badge">Market Gainers & Lossers</span>
               <span class="icon">
-                <img src="images/feature-icon1.png" alt="image">
+                <img src="images/icon0.png" alt="image">
               </span>
               <!-- h2 -->
-              <h2>Task creation and manage
-                lorem ipsum dollar</h2>
+              <h2>Get the <br> <span>Top Market Movers</span></h2>
               <!-- p -->
               <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                setting indus orem Ipsum has been the industrys standard
-                dummxt ever since the when an own printer
-                took a galley of type and scrambled it to make.
-                a type specimen book.
+                Stay updated with the real-time performance of the stock market. Track the top market gainers and losers, and get insights into the most active stocks of the day.
               </p>
             </div>
           </div>
@@ -208,19 +209,15 @@
           <!-- task text -->
           <div class="task_text">
             <div class="section_title white_text" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-              <span class="title_badge">Unique Features</span>
+              <span class="title_badge">Market News</span>
               <span class="icon">
                 <img src="images/feature-icon2.png" alt="image">
               </span>
               <!-- h2 -->
-              <h2>Client comunication for best results</h2>
+              <h2>Gets the Latest <br/><span>Market News</span></h2>
               <!-- p -->
               <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                setting indus orem Ipsum has been the industrys standard
-                dummxt ever since the when an own printer
-                took a galley of type and scrambled it to make.
-                a type specimen book.
+                Lorem Ipsum is simply dummy text.
               </p>
             </div>
           </div>
@@ -257,11 +254,7 @@
               <h2>Live chat with Video Call</h2>
               <!-- p -->
               <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                setting indus orem Ipsum has been the industrys standard
-                dummxt ever since the when an own printer
-                took a galley of type and scrambled it to make.
-                a type specimen book.
+                Lorem Ipsum is simply dummy text.
               </p>
             </div>
           </div>
@@ -281,8 +274,8 @@
       <div class="container">
         <div class="section_title" data-aos="fade-up" data-aos-duration="1500">
           <span class="title_badge mb-1">About us</span>
-          <h2>Application with the best <img src="images/mobileicon.png" alt="image"> user <br>
-            interface convert <span><img src="images/usericon.png" alt="image"> visitor</span> into <span><img
+          <h2>Application with the best <img src="images/mobileicon.png" alt="image"> User <br>
+            Interface converts <span><img src="images/usericon.png" alt="image"> visitors</span> into <span><img
                 src="images/magnet.png" alt="image"> leads</span></h2>
         </div>
         <div class="row">
@@ -290,26 +283,26 @@
             <ul class="app_statstic" id="counter" data-aos="fade-in" data-aos-duration="1500">
               <li data-aos="fade-up" data-aos-duration="1500">
                 <div class="text">
-                  <p><span class="counter-value" data-count="17">0</span><span>M+</span></p>
-                  <p>Download</p>
+                  <p><span class="counter-value" data-count="20">0</span><span>M+</span></p>
+                  <p>App Downloads</p>
                 </div>
               </li>
               <li data-aos="fade-up" data-aos-duration="1500">
                 <div class="text">
-                  <p><span class="counter-value" data-count="2300">1500</span><span>+</span></p>
-                  <p>Reviews</p>
+                  <p><span class="counter-value" data-count="5000">1500</span><span>+</span></p>
+                  <p>Positive Reviews</p>
                 </div>
               </li>
               <li data-aos="fade-up" data-aos-duration="1500">
                 <div class="text">
-                  <p><span class="counter-value" data-count="150">0</span><span>+</span></p>
-                  <p>Countries</p>
+                  <p><span class="counter-value" data-count="120">0</span><span>+</span></p>
+                  <p>Countries Served</p>
                 </div>
               </li>
               <li data-aos="fade-up" data-aos-duration="1500">
                 <div class="text">
-                  <p><span class="counter-value" data-count="08">0 </span><span>M+</span></p>
-                  <p>Followers</p>
+                  <p><span class="counter-value" data-count="10">0 </span><span>M+</span></p>
+                  <p>Active Followers</p>
                 </div>
               </li>
             </ul>
@@ -320,22 +313,29 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <p data-aos="fade-up" data-aos-duration="1500">Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry lorem Ipsum has been the
-              industrys standard dummy text ever since the when an unknown
-              printer took a galley of type and scrambled
-              it to make a type specimen book.</p>
+            <p data-aos="fade-up" data-aos-duration="1500">
+              Our app offers a seamless user experience, designed to cater to both beginners and professionals in the stock market. 
+              With advanced features like real-time analytics, portfolio tracking, and stock market insights, 
+              our platform empowers users to make informed decisions and stay ahead in the financial market.
+            </p>
             <div class="video_block" data-aos="fade-up" data-aos-duration="1500">
               <img class="thumbnil" src="images/applicationvideothumb.png" alt="image">
               <div class="playBtn">
                 <a href="#" class="popup-youtube play-button play_icon"
-                  data-url="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1" data-toggle="modal" data-target="#myModal" title="XJj2PbenIsU"><img src="images/play_white.svg" alt="img"></a>
+                  data-url="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1" data-toggle="modal" data-target="#myModal" title="Watch Demo">
+                  <img src="images/play_white.svg" alt="img">
+                </a>
                 <img class="spin_text" src="images/playvideotext.png" alt="image">
               </div>
             </div>
             <div class="btn_block" data-aos="fade-up" data-aos-duration="1500">
               <a href="contact.html" class="btn puprple_btn ml-0">START FREE TRIAL</a>
               <div class="btn_bottom"></div>
+            </div>
+            <div class="made_in_india" data-aos="fade-up" data-aos-duration="1500">
+              <p style="text-align: center; margin-top: 20px;">
+                ❤️ Made with Love in 🇮🇳
+              </p>
             </div>
           </div>
         </div>
@@ -403,158 +403,7 @@
     </div>
     <!-- Text List flow Section End -->
 
-    <!-- Service Section Start -->
-    <section class="row_am service_section">
-      <div class="container">
-        <div class="section_title" data-aos="fade-up" data-aos-duration="1500">
-          <span class="title_badge mb-1">Services</span>
-          <h2>Premium <span>services</span> of <br>
-            our application</h2>
-        </div>
-        <div class="row service_blocks">
-          <div class="col-md-6">
-            <div class="service_text" data-aos="fade-up" data-aos-duration="1500">
-              <div class="service_badge"><i class="icofont-tasks-alt"></i>
-                <span>Task Manage</span>
-              </div>
-              <h2><span>Task creation</span> & manage <br>
-                lorem ipsum dollar</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typtting
-                industry lorem Ipsum has been the
-                industrys standard dummy text ever since.</p>
-              <ul class="listing_block">
-                <li>
-                  <div class="icon">
-                    <span><i class="icofont-ui-check"></i></span>
-                  </div>
-                  <div class="text">
-                    <h3>Automate all task</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and
-                      setting industry.</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <span><i class="icofont-ui-check"></i></span>
-                  </div>
-                  <div class="text">
-                    <h3>Get notify lorem</h3>
-                    <p>Dummy text of the printing and typesetting industry
-                      lorem Ipsum has been the.</p>
-                  </div>
-                </li>
-              </ul>
-              <div class="btn_block">
-                <a href="contact.html" class="btn puprple_btn ml-0">Start Free Trial</a>
-                <div class="btn_bottom"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="img" data-aos="fade-up" data-aos-duration="1500">
-              <img src="images/service1.png" alt="image">
-            </div>
-          </div>
-        </div>
-        <div class="row service_blocks flex-row-reverse">
-          <div class="col-md-6">
-            <div class="service_text right_side" data-aos="fade-up" data-aos-duration="1500">
-              <div class="service_badge"><i class="icofont-ui-clock"></i>
-                <span>Schedule Meeting</span>
-              </div>
-              <h2><span>Manage project</span> and
-                track lorem</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry lorem Ipsum has been the
-                industrys standard dummy.</p>
-              <ul class="feature_list">
-                <li>
-                  <div class="icon">
-                    <span><i class="icofont-check-circled"></i></span>
-                  </div>
-                  <div class="text">
-                    <p>Lorem Ipsum is simply dummy text</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <span><i class="icofont-check-circled"></i></span>
-                  </div>
-                  <div class="text">
-                    <p>The printing and typesetting industry lorem</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <span><i class="icofont-check-circled"></i></span>
-                  </div>
-                  <div class="text">
-                    <p>Has been the industrys dummy</p>
-                  </div>
-                </li>
-              </ul>
-              <div class="btn_block">
-                <a href="contact.html" class="btn puprple_btn ml-0">Start Free Trial</a>
-                <div class="btn_bottom"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="img" data-aos="fade-up" data-aos-duration="1500">
-              <img src="images/service2.png" alt="image">
-            </div>
-          </div>
-        </div>
-        <div class="row service_blocks">
-          <div class="col-md-6">
-            <div class="service_text" data-aos="fade-up" data-aos-duration="1500">
-              <div class="service_badge"><i class="icofont-list"></i> <span>History</span></div>
-              <h2><span>Task creation</span> & manage
-                lorem ipsum dollar</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typtting
-                industry lorem Ipsum has been the
-                industrys standard dummy text ever since.</p>
-              <ul class="feature_list">
-                <li>
-                  <div class="icon">
-                    <span><i class="icofont-check-circled"></i></span>
-                  </div>
-                  <div class="text">
-                    <p>Lorem Ipsum is simply dummy text</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <span><i class="icofont-check-circled"></i></span>
-                  </div>
-                  <div class="text">
-                    <p>The printing and typesetting industry lorem</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="icon">
-                    <span><i class="icofont-check-circled"></i></span>
-                  </div>
-                  <div class="text">
-                    <p>Has been the industrys dummy</p>
-                  </div>
-                </li>
-              </ul>
-              <div class="btn_block">
-                <a href="#" class="btn puprple_btn ml-0">Start Free Trial</a>
-                <div class="btn_bottom"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="img" data-aos="fade-up" data-aos-duration="1500">
-              <img src="images/service3.png" alt="image">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Service Section End -->
+    <!--  -->
 
     <!-- How It Work Section Start -->
     <section class="how_it_section white_text">
@@ -633,114 +482,7 @@
   <!-- Wraper End -->
 
   <!-- Positive Reviews Section Start -->
-  <section class="review_section row_am">
-    <div class="container">
-      <div class="positive_inner">
-        <div class="row">
-          <div class="col-md-6 sticky-top">
-            <div class="sidebar_text" data-aos="fade-up" data-aos-duration="1500">
-              <div class="section_title text-left">
-                <span class="title_badge">Reviews</span>
-                <h2><span>Positive reviews </span> <br>
-                  of our clients</h2>
-              </div>
-              <div class="google_rating">
-                <div class="star">
-                  <span><i class="icofont-star"></i></span>
-                  <span><i class="icofont-star"></i></span>
-                  <span><i class="icofont-star"></i></span>
-                  <span><i class="icofont-star"></i></span>
-                  <span><i class="icofont-star"></i></span>
-                </div>
-                <p>4.5/5.0 Rated on <img class="img-fluid" src="images/google.png" alt="image"></p>
-              </div>
-              <div class="user_review">
-                <p>1399 <a href="#">Total user reviews <i class="icofont-arrow-right"></i></a></p>
-              </div>
-              <div class="smiley_icon"><img src="images/smily.png" alt="image"></div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="review_side">
-              <div class="review_block" data-aos="fade-up" data-aos-duration="1500">
-                <div class="coustomer_info">
-                  <div class="avtar">
-                    <img src="images/review1.png" alt="image">
-                    <div class="text">
-                      <h3>Willium Joy</h3>
-                      <span>Smartbrain Tech</span>
-                    </div>
-                  </div>
-                  <div class="star">
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                  </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Sapiente culpa, dolores ullam
-                  laudantium deleniti ipsa qui saepe voluptatum nam pariatur?
-                  Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Neque, totam.</p>
-              </div>
-              <div class="review_block" data-aos="fade-up" data-aos-duration="1500">
-                <div class="coustomer_info">
-                  <div class="avtar">
-                    <img src="images/review2..png" alt="image">
-                    <div class="text">
-                      <h3>John Due</h3>
-                      <span>Corporate Agency</span>
-                    </div>
-                  </div>
-                  <div class="star">
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                  </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Sapiente culpa, dolores ullam
-                  laudantium deleniti ipsa qui saepe voluptatum nam pariatur?
-                  Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Pariatur et, nemo distinctio
-                  eum
-                  omnis quam!</p>
-              </div>
-              <div class="review_block" data-aos="fade-up" data-aos-duration="1500">
-                <div class="coustomer_info">
-                  <div class="avtar">
-                    <img src="images/review3..png" alt="image">
-                    <div class="text">
-                      <h3>Maria</h3>
-                      <span>Company Inc</span>
-                    </div>
-                  </div>
-                  <div class="star">
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                    <span><i class="icofont-star"></i></span>
-                  </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Sapiente culpa, dolores ullam
-                  laudantium deleniti ipsa qui saepe voluptatum nam pariatur?
-                  Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Pariatur et, nemo distinctio
-                  eum
-                  omnis quam!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
   <!-- Positive Reviews Section End -->
 
   <!-- Page Wraper -->
@@ -748,271 +490,6 @@
     
 
     <!-- Pricing-Section -->
-    <section class="row_am pricing_section white_text" data-aos="fade-in" data-aos-duration="1500">
-      <div class="pricing_inner">
-        <!-- container start -->
-        <div class="container">
-          <div class="dotes_blue"><img src="images/blue_dotes.png" alt="image"></div>
-          <div class="section_title" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-            <span class="title_badge">Pricing</span>
-            <h2>Choose your plan</h2>
-          </div>
-
-          <!-- Pricing Table Tabs -->
-          <ul class="nav nav-tabs" id="myTab" role="tablist" data-aos="fade-up" data-aos-duration="1500">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="monthly-tab" data-toggle="tab" data-target="#monthly" type="button"
-                role="tab" aria-controls="monthly" aria-selected="true">Monthly</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="yearly-tab" data-toggle="tab" data-target="#yearly" type="button" role="tab"
-                aria-controls="yearly" aria-selected="false">Yearly</button>
-            </li>
-          </ul>
-
-          <!-- Tabing Details -->
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
-              <!-- pricing box  monthly start -->
-              <div class="pricing_pannel">
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="pannel_block" data-aos="fade-up" data-aos-duration="1500">
-                      <div class="heading">
-                        <h3>Free</h3>
-                        <span>For single users</span>
-                      </div>
-                      <div class="pricing">
-                        <h3>$15 <span>/month</span></h3>
-                      </div>
-                      <ul class="features">
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>Up to 15 GB cloud storage</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>30 day chat history</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-close-circled"></i></span>
-                          <p>Data security</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-close-circled"></i></span>
-                          <p>5 People access</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-close-circled"></i></span>
-                          <p>24/7 Support</p>
-                        </li>
-                      </ul>
-                      <div class="btn_block">
-                        <a href="contact.html" class="btn puprple_btn ml-0">Choose Plan</a>
-                        <div class="btn_bottom"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="pannel_block highlited_block" data-aos="fade-up" data-aos-duration="1500">
-                      <div class="heading">
-                        <h3>Premium</h3>
-                        <span>For agencies</span>
-                        <span class="offer">Save 50%</span>
-                      </div>
-                      <div class="pricing">
-                        <h3>$45 <span>/month</span></h3>
-                      </div>
-                      <ul class="features">
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>Up to 15 GB cloud storage</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>30 day chat history</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>Data security</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>5 People access</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>24/7 Support</p>
-                        </li>
-                      </ul>
-                      <div class="btn_block white_btn">
-                        <a href="contact.html" class="btn puprple_btn ml-0">Choose Plan</a>
-                        <div class="btn_bottom"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="pannel_block" data-aos="fade-up" data-aos-duration="1500">
-                      <div class="heading">
-                        <h3>Standard</h3>
-                        <span>For team</span>
-                      </div>
-                      <div class="pricing">
-                        <h3>$30 <span>/month</span></h3>
-                      </div>
-                      <ul class="features">
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>Up to 15 GB cloud storage</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>30 day chat history</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-check-circled"></i></span>
-                          <p>Data security</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-close-circled"></i></span>
-                          <p>5 People access</p>
-                        </li>
-                        <li>
-                          <span class="icon"><i class="icofont-close-circled"></i></span>
-                          <p>24/7 Support</p>
-                        </li>
-                      </ul>
-                      <div class="btn_block">
-                        <a href="contact.html" class="btn puprple_btn ml-0">Choose Plan</a>
-                        <div class="btn_bottom"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- pricing box monthly end -->
-            <!-- pricing box yearly start -->
-            <div class="tab-pane fade" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="pannel_block">
-                    <div class="heading">
-                      <h3>Free</h3>
-                      <span>For single users</span>
-                    </div>
-                    <div class="pricing">
-                      <h3>$99 <span>/month</span></h3>
-                    </div>
-                    <ul class="features">
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>Up to 15 GB cloud storage</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>30 day chat history</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-close-circled"></i></span>
-                        <p>Data security</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-close-circled"></i></span>
-                        <p>5 People access</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-close-circled"></i></span>
-                        <p>24/7 Support</p>
-                      </li>
-                    </ul>
-                    <a href="contact.html" class="btn puprple_btn ml-0">Choose Plan</a>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="pannel_block highlited_block">
-                    <div class="heading">
-                      <h3>Premium</h3>
-                      <span>For agencies</span>
-                      <span class="offer">Save 50%</span>
-                    </div>
-                    <div class="pricing">
-                      <h3>$399 <span>/month</span></h3>
-                    </div>
-                    <ul class="features">
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>Up to 15 GB cloud storage</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>30 day chat history</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>Data security</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>5 People access</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>24/7 Support</p>
-                      </li>
-                    </ul>
-                    <div class="btn_block white_btn">
-                      <a href="contact.html" class="btn puprple_btn ml-0">Choose Plan</a>
-                      <div class="btn_bottom"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="pannel_block">
-                    <div class="heading">
-                      <h3>Standard</h3>
-                      <span>For team</span>
-                    </div>
-                    <div class="pricing">
-                      <h3>$299 <span>/month</span></h3>
-                    </div>
-                    <ul class="features">
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>Up to 15 GB cloud storage</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>30 day chat history</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-check-circled"></i></span>
-                        <p>Data security</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-close-circled"></i></span>
-                        <p>5 People access</p>
-                      </li>
-                      <li>
-                        <span class="icon"><i class="icofont-close-circled"></i></span>
-                        <p>24/7 Support</p>
-                      </li>
-                    </ul>
-                    <a href="contact.html" class="btn puprple_btn ml-0">Choose Plan</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- pricing box yearly end -->
-
-            <p class="contact_text text-center" data-aos="fade-up" data-aos-duration="1500">Not
-              sure what to choose ? <a href="#">contact us</a> for custom packages</p>
-          </div>
-        </div>
-      </div>
-      <!-- container start end -->
-    </section>
     <!-- Pricing-Section end -->
 
     <!-- Beautifull-interface-Section start -->
@@ -1267,14 +744,18 @@
   <script src='js/typed.min.js'></script>
   <!-- main-js-Link -->
   <script src="js/main.js"></script>
-
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KK3VGJNM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <script>
     $("#typed").typed({
       strings: ["Track Your Portfolio.", "Comprehensive Market Insights.", "Investment News and Trends.", "Download The App Today !!"],
       typeSpeed: 120,
       startDelay: 0,
-      backSpeed: 60,
-      backDelay: 1800,
+      backSpeed: 100,
+      backDelay: 1200,
       loop: true,
       cursorChar: "|",
       contentType: 'html'

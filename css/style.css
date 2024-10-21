@@ -494,8 +494,8 @@ header {
     top: 100%;
     background-color: var(--bg-white);
     border-radius: 0 0 10px 10px;
-    min-width: 210px;
-    max-width: 230px;
+    min-width: 250px;
+    max-width: 280px;
     margin-top: -10px;
     transition: .4s all;
     opacity: 0;
@@ -3994,4 +3994,13 @@ footer .download_side .app_btn li a img {
     background-color: var(--primery);
     z-index: -5;
     border-radius: 30px;
+}
+.indic li:not(:last-child)::after {
+    content: "|";
+    margin: 0 8px;
+    color: #06d6a0;
+}
+
+.indic li a{
+    color: white;
 }

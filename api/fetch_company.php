@@ -26,7 +26,42 @@
 				    // Return the result as JSON
 				    header('Content-Type: application/json');
 				    echo json_encode($companies);
-				}else{
+				} else if(isset($_GET['symbol'])){
+				    $searchQuery = $_GET['symbol'];
+		    		$searchQuery = $conn->real_escape_string($searchQuery);
+		    		$sql = "SELECT * FROM scripts WHERE ticker_symbol ='$searchQuery'";
+        		    $result = $conn->query($sql);
+        
+        		    $companies = [];
+        		    if ($result->num_rows > 0) {
+        		        // Output data of each row
+        		        while ($row = $result->fetch_assoc()) {
+        		            $companies[] = [ "name" => $row['company_name'] ,"symbol" => $row['ticker_symbol'],"script_code" => $row['script_code']];
+        		        }
+        		    }
+        
+        		    // Return the result as JSON
+        		    header('Content-Type: application/json');
+        		    echo json_encode($companies);
+				} else if(isset($_GET['id'])){
+				    $searchQuery = $_GET['id'];
+		    		$searchQuery = $conn->real_escape_string($searchQuery);
+		    		$sql = "SELECT * FROM scripts WHERE id ='$searchQuery'";
+        		    $result = $conn->query($sql);
+        
+        		    $companies = [];
+        		    if ($result->num_rows > 0) {
+        		        // Output data of each row
+        		        while ($row = $result->fetch_assoc()) {
+        		            $companies[] = [ "name" => $row['company_name'] ,"symbol" => $row['ticker_symbol'],"script_code" => $row['script_code']];
+        		        }
+        		    }
+        
+        		    // Return the result as JSON
+        		    header('Content-Type: application/json');
+        		    echo json_encode($companies);
+				}
+				else{
 					//
 					header('Content-Type: application/json');
 		    		echo json_encode($user_data);

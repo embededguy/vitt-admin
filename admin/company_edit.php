@@ -14,6 +14,10 @@
       if ($result->num_rows > 0) {
         $product = $result->fetch_assoc();
       }
+
+      $path = $product['imgpath'];
+      $bid  = $product['fkbasicindustryid'];
+
       $sql = "SELECT * FROM basic_industry_index WHERE status = 1";
       $result = $conn->query($sql); 
       if ($result->num_rows > 0) {
@@ -26,6 +30,9 @@
         $category = [];
       }
     }
+  }
+  if (!isset($_SESSION['csrf_token'])) {
+      $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
   }
 ?>
 
@@ -115,9 +122,9 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="page-title">Company Details Add</h2>
-              <p class="lead text-muted">Helps, you add a new company details.</p>
-            <div class="row">
+              <h2 class="page-title">Company Details Edit</h2>
+              <p class="lead text-muted">Helps, you edit a company details.</p>
+              <div class="row">
                 <div class="col-md-12">
                   <div class="card shadow mb-4">
                     <div class="card-header">
@@ -135,13 +142,13 @@
                       }
                     ?>
                     <div class="card-body">
-                    <form id="uploadForm" action="./controller/process_company_add.php" method="POST">
+                    <form id="uploadForm" action="./controller/process_company_edit.php" method="POST" enctype="multipart/form-data">
                       <div class="form-row">
                         <div class="form-group col-md-4">
                           <label for="customFilex">Upload Images: </label>
                           <div class="custom-file">
-                            <input name="image[]" type="file" class="custom-file-input" id="customFilex" accept="image/*" multiple required>
-                            <label class="custom-file-label" for="customFilex">Choose files</label>
+                            <input name="image" type="file" class="custom-file-input" id="customFilex" accept="image/*">
+                            <label class="custom-file-label" for="customFilex">Choose file</label>
                           </div>
                         </div>
                       </div>
@@ -149,18 +156,26 @@
                       <div class="form-row">
                         <div class="form-group col-md-12">
                           <h4 style="text-align:center;">Company Logo</h4>
-                          <p style="text-align:center;" class="lead text-muted">More Image can be added by again clicking the Upload Button.<br/>Min Quality 200x200 (ONLY SQUARE IMAGES)</p>
+                          <p style="text-align:center;" class="lead text-muted">Min Quality 200x200 (ONLY SQUARE IMAGES)</p>
                         </div>
                       </div>
-                      <div class="gallery" id="imageGallery"></div>
+                      <div id="imageSection" style="display:flex;justify-content: center;gap: 10px;">
+                          <?php if(! empty($path)):?>
+                            <?php if(empty($_SERVER['HTTPS'])):?>
+                                <img src="<?php echo htmlspecialchars("../.".$path); ?>" alt="Image" width="200">
+                            <?php else:?>
+                                <img src="https://vittapp.in/<?php echo htmlspecialchars($path); ?>" alt="Image" width="200">
+                            <?php endif;?>
+                          <?php endif;?>
+                      </div>
+                      
                       <br/>
                       <br/>                   
                       <div class="form-row">
                         <div class="form-group col-md-4">
                           <label for="inputPassword4">Company Name: </label>
                           <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-                          <input type="hidden" id="sdesc" name="sdesc" value="">
-                          <input type="hidden" id="ldesc" name="ldesc" value="">               
+                          <input type="hidden" name="id" value="<?php echo $id;?>">
                           <input name="name" type="text" class="form-control" id="inputPassword4" placeholder="Name" value="<?= $product['company_name']?>" >
                         </div>
                         <div class="form-group col-md-2">
@@ -180,7 +195,8 @@
                                 foreach ($category as $spec) {
                                   $id = $spec['id'];
                                   $name = $spec['name'];
-                                  echo "<option value='$id'>$name</option>";
+                                  $selected = ($id == $bid) ? "selected":"";  
+                                  echo "<option value='$id' $selected>$name</option>";
                                 }
                               ?>
                           </select>
@@ -197,7 +213,7 @@
                         </div>
                         <div class="form-group col-md-6">
                           <label for="sku">Market Cap (Cr.): </label>
-                          <input name="mcap" type="text" class="form-control" id="marketCap" placeholder="Market Cap" disabled>
+                          <input name="mcap" type="text" class="form-control" id="marketCap" placeholder="Market Cap" value="<?= $product['mcap']?>" >
                         </div>
                       </div>
                       <div class="form-row">
@@ -221,7 +237,7 @@
                       <div class="form-row">
                         <div class="form-group col-md-3">
                           <label for="custom-money">Debt to Equity: </label>
-                          <input class="form-control" type="text" name="debttoequity" placeholder="No Of Shares Listed"  value="<?= $product['debttoequity']?>">
+                          <input class="form-control" type="text" name="debttoequity" placeholder="Depth to Equity"  value="<?= $product['debttoequity']?>" required>
                         </div>      
                         <div class="form-group col-md-3">
                           <label for="custom-money">Dividend Yield (%): </label>
@@ -237,7 +253,7 @@
                         </div>
                         <div class="form-group col-md-2">
                           <label for="custom-money">Face Value: </label>
-                          <input class="form-control" type="text" name="face_value" placeholder="Face Value" value="<?= $product['face_value']?>">
+                          <input class="form-control" type="text" name="face_value" placeholder="Face Value" value="<?= $product['face_value']?>" required>
                         </div>
                       </div>
                       <div class="form-row">
@@ -256,6 +272,10 @@
                         <div class="form-group col-md-2">
                           <label for="custom-money">P/B Ratio: </label>
                           <input class="form-control" type="text" name="pb" placeholder="P/B" value="<?= $product['pb_ratio']?>" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                          <label for="custom-money">Segment: </label>
+                          <input class="form-control" type="text" name="segment" placeholder="SEG" value="<?= $product['segment']?>" required>
                         </div>
                       </div>
                       <br/>
@@ -310,7 +330,6 @@
       
     <script src="js/apps.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
     <script>
       $('.drgpicker').daterangepicker(
       {
@@ -331,146 +350,26 @@
         multiple: true,
         theme: 'bootstrap4',
       });
-
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag()
-      {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'UA-56159088-1');
+    
     </script>
     
     <script>
-      let images = [];
+       // Display selected images before submitting the form
+      const imageSection = document.getElementById('imageSection');
+      const inputImages = document.getElementById('customFilex');
 
-      function previewImages() {
-          const fileInput = document.getElementById('customFilex');
-          const imageGallery = document.getElementById('imageGallery');
+      inputImages.addEventListener('change', (event) => {
+          imageSection.innerHTML = ''; // Clear previous previews
 
-          if (fileInput.files && fileInput.files.length > 0) {
-              for (let i = 0; i < fileInput.files.length; i++) {
-                  const reader = new FileReader();
-                  reader.onload = function(e) {
-                      const imgContainer = document.createElement('div');
-                      imgContainer.classList.add('image-item');
-                      imgContainer.setAttribute('data-index', images.length); // Set index as the current length of images array
-
-                      const img = document.createElement('img');
-                      img.src = e.target.result;
-                      img.style.width = "200px"
-                      imgContainer.appendChild(img);
-                      imageGallery.appendChild(imgContainer);
-
-                      images.push(e.target.result);
-
-                      const deleteBtn = document.createElement('button');
-                      deleteBtn.innerHTML = 'Delete';
-                      deleteBtn.type = 'button';
-                      deleteBtn.className = 'btn btn-danger';                    
-                      deleteBtn.addEventListener('click', function() {
-                          deleteImage(imgContainer);
-                      });
-                      imgContainer.appendChild(deleteBtn);
-                  }
-                  reader.readAsDataURL(fileInput.files[i]);
-              }
+          for (const file of event.target.files) {
+              const img = document.createElement('img');
+              img.src = URL.createObjectURL(file);
+              img.className = 'img-fluid';
+              img.style.borderRadius = "10px";
+              img.style.border = "1px solid grey"
+              imageSection.appendChild(img);
           }
-      }
-
-      function deleteImage(imgContainer) {
-          const index = parseInt(imgContainer.getAttribute('data-index')); // Get index from custom attribute
-          const imageGallery = document.getElementById('imageGallery');
-          imageGallery.removeChild(imgContainer);
-          images.splice(index, 1);
-          refreshIndices(); // Refresh indices after deletion
-      }
-
-      // Function to refresh the data-index attributes after deletion
-      function refreshIndices() {
-          const imageItems = document.querySelectorAll('.image-item');
-          imageItems.forEach((item, index) => {
-              item.setAttribute('data-index', index);
-          });
-      }
-
-      // Function to append image data URLs to the form before submission
-      function appendImagesToForm(event) {
-          const form = document.getElementById('uploadForm');
-          images.forEach((imageData, index) => {
-              const input = document.createElement('input');
-              input.type = 'hidden';
-              input.name = `images[${index}]`;
-              input.value = imageData;
-              form.appendChild(input);
-          });
-      }
-
-      /////////
-      // let images = [];
-
-      // function previewImages() {
-      //     const fileInput = document.getElementById('customFilex');
-      //     const imageGallery = document.getElementById('imageGallery');
-
-      //     if (fileInput.files && fileInput.files.length > 0) {
-      //         for (let i = 0; i < fileInput.files.length; i++) {
-      //             const reader = new FileReader();
-      //             reader.onload = function(e) {
-      //                 const imgContainer = document.createElement('div');
-      //                 imgContainer.classList.add('image-item');
-      //                 imgContainer.setAttribute('data-index', images.length); // Set index as the current length of images array
-
-      //                 const img = document.createElement('img');
-      //                 img.src = e.target.result;
-      //                 img.style.width = "200px"
-      //                 imgContainer.appendChild(img);
-      //                 imageGallery.appendChild(imgContainer);
-
-      //                 images.push(e.target.result);
-
-      //                 const deleteBtn = document.createElement('button');
-      //                 deleteBtn.innerHTML = 'Delete';
-      //                 deleteBtn.className = 'btn btn-danger';
-      //                 deleteBtn.addEventListener('click', function() {
-      //                     deleteImage(imgContainer);
-      //                 });
-      //                 imgContainer.appendChild(deleteBtn);
-      //             }
-      //             reader.readAsDataURL(fileInput.files[i]);
-      //         }
-      //     }
-      // }
-
-      // function deleteImage(imgContainer) {
-      //     const index = parseInt(imgContainer.getAttribute('data-index')); // Get index from custom attribute
-      //     const imageGallery = document.getElementById('imageGallery');
-      //     imageGallery.removeChild(imgContainer);
-      //     images.splice(index, 1);
-      //     refreshIndices(); // Refresh indices after deletion
-      // }
-
-      // // Function to refresh the data-index attributes after deletion
-      // function refreshIndices() {
-      //     const imageItems = document.querySelectorAll('.image-item');
-      //     imageItems.forEach((item, index) => {
-      //         item.setAttribute('data-index', index);
-      //     });
-      // }
-      document.getElementById('uploadForm').addEventListener('submit', appendImagesToForm);
-      document.getElementById('customFilex').addEventListener('change', previewImages);
-      document.getElementById('issuedShares').addEventListener('input', calculateMarketCap);
-      document.getElementById('ltp').addEventListener('input', calculateMarketCap);
-
-      function calculateMarketCap() {
-          const shares = parseFloat(document.getElementById('issuedShares').value.replace(/,/g, '')) || 0;
-          const ltp = parseFloat(document.getElementById('ltp').value.replace(/,/g, '')) || 0;
-          const marketCap = (shares * ltp).toFixed(2);
-
-          document.getElementById('marketCap').value = marketCap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      }
-      calculateMarketCap();
+      });
     </script>
   </body>
 </html>

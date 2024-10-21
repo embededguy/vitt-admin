@@ -20,6 +20,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item has_dropdown">
+            <a class="nav-link" href="index.php">Screener</a>
+          </li>
+          <li class="nav-item has_dropdown">
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item has_dropdown">
@@ -27,6 +30,19 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="blog.php">Blog</a>
+          </li>
+          <li class="nav-item has_dropdown">
+            <a class="nav-link" href="calculators.php">Calculator</a>
+            <span class="drp_btn"><i class="icofont-rounded-down"></i></span>
+            <div class="sub_menu">
+              <ul>
+                <li><a href="./calculators/sip-calculator.php" style="font-family: inherit;">SIP Calculator</a></li>
+                <li><a href="index.html">Lumpsum Calculator</a></li>
+                <li><a href="index.html">MF Calculator</a></li> 
+                <li><a href="index.html">EMI Calculator</a></li>
+                <li><a href="index.html">Compound Intrest</a></li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.php">About us</a>

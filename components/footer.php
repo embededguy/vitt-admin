@@ -28,7 +28,7 @@
             <li><a href="https://instagram.com/vittapp.in"><i class="icofont-instagram"></i></a></li>
             <li><a href="#"><i class="icofont-linkedin"></i></a></li>
             <li><a href="#"><i class="icofont-twitter"></i></a></li>
-            <li><a href="https://youtube.com"><i class="icofont-youtube"></i></a></li>
+            <li><a href="https://youtube.com/@vittapp"><i class="icofont-youtube"></i></a></li>
           </ul>
         </div>
       </div>
@@ -55,7 +55,7 @@
     <div class="container">
       <div class="ft_inner">
         <div class="copy_text">
-          <p>© <script>document.write(new Date().getFullYear());</script>, Developed & Managed by <a href="https://vhiron.com" target="blank">Vhiron Technologies</a>.</p>
+          <p><span style="color:orange">#</span> Made with ❤️ in India | © <script>document.write(new Date().getFullYear());</script>, Developed & Managed by <a href="https://vhiron.com" target="blank">Vhiron Technologies</a>.</p>
         </div>
         <ul class="links">
           <li><a href="index.php">Home</a></li>
@@ -66,6 +66,43 @@
         </ul>
         
       </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="container">
+    <div class="row">
+      <h6 style="color: white;"><span>Most Popular on Vitt </span></h6>
+    </div>
+    <br/>
+    <div class="row" style="gap:10px">
+      <p style="color: white;"><span style="color:#06d6a0;font-weight: 700;">MARKET INDICES : </span></p>
+      <ul class="indic" style="margin: 0; display:flex;flex-wrap: wrap;flex-direction: row !important; align-items: normal; gap: 5px;">
+        <li><a href="">NIFTY 50</a></li>
+        <li><a href="">NIFTY 100</a></li>
+        <li><a href="">NIFTY MIDCAP 100</a></li>
+        <li><a href="">NIFTY BANK</a></li>
+        <li><a href="">NIFTY NEXT 50</a></li>
+        <li><a href="">BSE SENSEX</a></li>
+        <li><a href="">NIFTY METAL</a></li>
+        <li><a href="">NIFTY IT</a></li>
+        <li><a href="">NIFTY AUTO</a></li>
+      </ul>
+    </div>
+    <br/>
+    <div class="row" style="gap:10px">
+      <p style="color: white;"><span style="color:#06d6a0;font-weight: 700;">OUR TOOLS :</span></p>
+      <ul class="indic" style="margin: 0; display:flex;flex-wrap: wrap;flex-direction: row !important; align-items: normal; gap: 5px;">
+        <li><a href="sip-calculator.php">SIP CALCULATOR</a></li>
+        <li><a href="sip-calculator.php">EMI CALCULATOR</a></li>
+        <li><a href="sip-calculator.php">MF CALCULATOR</a></li>
+        <li><a href="sip-calculator.php">FD CALCULATOR</a></li>
+        <li><a href="sip-calculator.php">PPF CALCULATOR</a></li>
+        <li><a href="sip-calculator.php">EMI CALCULATOR</a></li>
+        <li><a href="sip-calculator.php">COMPOUND INTEREST</a></li>
+        <li><a href="sip-calculator.php">BROKERAGE CALCULATOR</a></li>
+        <li><a href="sip-calculator.php">MARGIN CALCULATOR</a></li>
+      </ul>
     </div>
   </div>
 </footer>
