@@ -221,9 +221,21 @@
             </a>
           </li>
           <li class="nav-item sauth">
+            <a class="nav-link pl-3" href="./blog_type_add.php">
+              <i class="fe fe-plus-square fe-16"></i>
+              <span class="ml-1 item-text">Add Blog Type</span>
+            </a>
+          </li>
+          <li class="nav-item sauth">
             <a class="nav-link pl-3" href="./blog_list.php">
               <i class="fe fe-eye fe-16"></i>
-              <span class="ml-1 item-text">List All Blogs</span>
+              <span class="ml-1 item-text">List Blogs</span>
+            </a>
+          </li>
+          <li class="nav-item sauth">
+            <a class="nav-link pl-3" href="./blog_type_list.php">
+              <i class="fe fe-eye fe-16"></i>
+              <span class="ml-1 item-text">List Blogs Types</span>
             </a>
           </li>
         </ul>

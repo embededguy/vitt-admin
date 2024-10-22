@@ -155,18 +155,12 @@
                       <br/>
                       <div class="form-row">
                         <div class="form-group col-md-12">
-                          <h4 style="text-align:center;">Company Logo</h4>
+                          <h4 style="text-align:center;">Blog Image Main</h4>
                           <p style="text-align:center;" class="lead text-muted">Min Quality 200x200 (ONLY SQUARE IMAGES)</p>
                         </div>
                       </div>
                       <div id="imageSection" style="display:flex;justify-content: center;gap: 10px;">
-                          <?php if(! empty($path)):?>
-                            <?php if(empty($_SERVER['HTTPS'])):?>
-                                <img src="<?php echo htmlspecialchars("../.".$path); ?>" alt="Image" width="200">
-                            <?php else:?>
-                                <img src="https://vittapp.in/<?php echo htmlspecialchars($path); ?>" alt="Image" width="200">
-                            <?php endif;?>
-                          <?php endif;?>
+                          
                       </div>
                       
                       <br/>
@@ -180,16 +174,16 @@
                         </div>
                         <div class="form-group col-md-2">
                           <label for="inputPassword4">Ticker Symbol: </label>
-                          <input name="symbol" type="text" class="form-control" id="inputPassword4" placeholder="Ticker Symbol" value="<?= $product['ticker_symbol']?>">
+                          <input name="symbol" type="text" class="form-control" id="inputPassword4" placeholder="Ticker Symbol" value="<?= $product['ticker_symbol']?>" required>
                         </div>
                         <div class="form-group col-md-2">
                           <label for="inputPassword4">Script Code: </label>
-                          <input name="script_code" type="text" class="form-control" id="inputPassword4" placeholder="Code" value="<?= $product['script_code']?>">
+                          <input name="script_code" type="text" class="form-control" id="inputPassword4" placeholder="Code" value="<?= $product['script_code']?>" required>
                         </div>
 
                         <div class="form-group col-md-4">
                           <label for="parentCategory">Select Basic Industry: </label>
-                          <select class="form-control" name="basic_industry" id="parentCategory" required>
+                          <select class="form-control select2" name="basic_industry" id="parentCategory" required>
                             <option value="0" selected> -- Select Industry -- </option>
                               <?php
                                 foreach ($category as $spec) {
@@ -205,33 +199,33 @@
                       <div class="form-row">
                         <div class="form-group col-md-3">
                           <label for="custom-money">Shares Listed (Cr.): </label>
-                          <input class="form-control" id="issuedShares" type="text" name="issued_shares" placeholder="No Of Shares Listed" value="<?= $product['issued_shares']?>">
+                          <input class="form-control" id="issuedShares" type="text" name="issued_shares" placeholder="No Of Shares Listed" value="<?= $product['issued_shares']?>" required>
                         </div>      
                         <div class="form-group col-md-3">
                           <label for="sku">Latest Trading Price (LTP): </label>
-                          <input name="ltp" type="text" class="form-control" id="ltp" placeholder="LTP" value="<?= $product['ltp']?>">
+                          <input name="ltp" type="text" class="form-control" id="ltp" placeholder="LTP" value="<?= $product['ltp']?>" required>
                         </div>
                         <div class="form-group col-md-6">
                           <label for="sku">Market Cap (Cr.): </label>
-                          <input name="mcap" type="text" class="form-control" id="marketCap" placeholder="Market Cap" value="<?= $product['mcap']?>" >
+                          <input name="mcap" type="text" class="form-control" id="marketCap" placeholder="Market Cap" value="<?= $product['mcap']?>" required>
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-3">
                           <label for="custom-money">52 Week High Price: </label>
-                          <input class="form-control" type="text" name="52weekhigh" placeholder="52 Week High" value="<?= $product['52_week_high']?>">
+                          <input class="form-control" type="text" name="52weekhigh" placeholder="52 Week High" value="<?= $product['52_week_high']?>" required>
                         </div>      
                         <div class="form-group col-md-3">
                           <label for="custom-money">52 Week Low Price: </label>
-                          <input class="form-control" type="text" name="52weeklow" placeholder="52 Week Low" value="<?= $product['52_week_low']?>">
+                          <input class="form-control" type="text" name="52weeklow" placeholder="52 Week Low" value="<?= $product['52_week_low']?>" required>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="custom-money">Previous Close: </label>
-                          <input class="form-control" type="text" name="previous_close" placeholder="Previous Close" value="<?= $product['prev_close']?>">
+                          <input class="form-control" type="text" name="previous_close" placeholder="Previous Close" value="<?= $product['prev_close']?>" required>
                         </div>
                         <div class="form-group col-md-3">
                           <label for="custom-money">ROE (Return On Equity): </label>
-                          <input class="form-control" type="text" name="roe" placeholder="ROE" value="<?= $product['roe']?>">
+                          <input class="form-control" type="text" name="roe" placeholder="ROE" value="<?= $product['roe']?>" required>
                         </div>
                       </div>
                       <div class="form-row">
@@ -241,15 +235,15 @@
                         </div>      
                         <div class="form-group col-md-3">
                           <label for="custom-money">Dividend Yield (%): </label>
-                          <input class="form-control" type="text" name="d_yield" placeholder="Dividend Yield" value="<?= $product['div_yield']?>">
+                          <input class="form-control" type="text" name="d_yield" placeholder="Dividend Yield" value="<?= $product['div_yield']?>" required>
                         </div>
                         <div class="form-group col-md-2">
                           <label for="custom-money">Tick Size: </label>
-                          <input class="form-control" type="text" name="tick_size" placeholder="Tick Size" value="<?= $product['ticker_size']?>">
+                          <input class="form-control" type="text" name="tick_size" placeholder="Tick Size" value="<?= $product['ticker_size']?>"required>
                         </div>
                         <div class="form-group col-md-2">
                           <label for="custom-money">Book Value: </label>
-                          <input class="form-control" type="text" name="book_value" placeholder="Book Value" value="<?= $product['book_value']?>">
+                          <input class="form-control" type="text" name="book_value" placeholder="Book Value" value="<?= $product['book_value']?>" required>
                         </div>
                         <div class="form-group col-md-2">
                           <label for="custom-money">Face Value: </label>
@@ -348,6 +342,10 @@
       $('.select2-multi').select2(
       {
         multiple: true,
+        theme: 'bootstrap4',
+      });
+      $('.select2').select2(
+      {
         theme: 'bootstrap4',
       });
     

@@ -1,4 +1,4 @@
-# VITT ADMIN PANELYour Financial Partner)
+# VITT ADMIN PANEL (Your Financial Partner)
 
 ## Directory Structure
 

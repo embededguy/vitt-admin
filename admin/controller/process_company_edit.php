@@ -1,7 +1,7 @@
 <?php 
 	include('../config/db.php');
 	if ($_SERVER["REQUEST_METHOD"] === "POST") {
-		echo var_dump($_POST);
+
 		if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         	// Handle invalid CSRF token 
         	die("CSRF token validation failed.");
@@ -61,37 +61,19 @@
         if ($result->num_rows > 0) {
           $product = $result->fetch_assoc();
         }
+        
 
-    	$imageArray = explode(',', $product['imgpath']);
+    	if($_FILES['image']['error'] === UPLOAD_ERR_OK){
+	    	
+	    	unlink('../.' . $product['imgpath']);
+	  
+	    	$fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);    
+	    	$randomString = uniqid('', true);		
+	    	$newFilename = $randomString . '.' . $fileExtension;
+		   	$imagePath = $targetDirectory . $newFilename;
+		   	move_uploaded_file($_FILES['image']['tmp_name'], '../.'.$imagePath);
 
-    	foreach ($imageArray as $index => $path) {        	
-			unlink($path);          
-        }
-
-    	foreach ($_POST['images'] as $index => $base64Image) {
-	        // Decode the base64 string
-	        $base64Image = trim($base64Image);
-	        if (preg_match('/^data:image\/(\w+);base64,/', $base64Image, $type)) {
-	            $base64Image = substr($base64Image, strpos($base64Image, ',') + 1);
-	            $type = strtolower($type[1]);
-	            $base64Image = base64_decode($base64Image);
-
-	            if ($base64Image === false) {
-	                continue;
-	            }
-	            $directory =  './assets/companies/';
-	            $fileName =   $directory . uniqid('', true) . '.' . $type;
-	            $imageUrls .= $fileName . ',';
-
-	            file_put_contents('../.'.$fileName, $base64Image);
-
-	        } else {
-	            continue;
-	        }
-	    }
-	    $imageUrls = rtrim($imageUrls, ',');
-
-	    $sql = "UPDATE `scripts` SET 
+		   	$sql = "UPDATE `scripts` SET 
 	    				`script_code`='$script_code',
 	    				`company_name`='$company_name',
 	    				`ticker_symbol`='$symbol',
@@ -102,7 +84,7 @@
 	    				`mcap`='$mcap',
 	    				`52_week_high`='$high',
 	    				`52_week_low`='$low',
-	    				`imgpath`='$imageUrls',
+	    				`imgpath`='$imagePath',
 	    				`roe`='$roe',
 	    				`div_yield`='$d_yield',
 	    				`debttoequity`='$debttoequity',
@@ -116,14 +98,50 @@
 	    				`fkbasicindustryid`='$basic_industry'
 	    			WHERE id = '$id'";
 
-	   	if($conn->query($sql) === TRUE){
-	   		//
-	   		header("Location: ../company_edit.php?id=$id&success=1");
-	   	}else{
-	   		//
-	   		header("Location: ../company_edit.php?success=0");
-	   	}
-    	
+    	   	if($conn->query($sql) === TRUE){
+    	   		//
+    	   		header("Location: ../company_edit.php?id=$id&success=1");
+    	   	}else{
+    	   		//
+    	   		header("Location: ../company_edit.php?id=$id&success=0");
+    	   	}
+    	}else{
+    	    $img_pth = $product['imgpath'];
+    	    
+    	    $sql = "UPDATE `scripts` SET 
+	    				`script_code`='$script_code',
+	    				`company_name`='$company_name',
+	    				`ticker_symbol`='$symbol',
+	    				`segment`='$segment',
+	    				`ticker_size`='$tick_size',
+	    				`ltp`='$ltp',
+	    				`prev_close`='$prev_close',
+	    				`mcap`='$mcap',
+	    				`52_week_high`='$high',
+	    				`52_week_low`='$low',
+	    				`imgpath`='$img_pth',
+	    				`roe`='$roe',
+	    				`div_yield`='$d_yield',
+	    				`debttoequity`='$debttoequity',
+	    				`issued_shares`='$oshares',
+	    				`book_value`='$book_value',
+	    				`face_value`='$face_value',
+	    				`eps`='$eps',
+	    				`ipe`='$ipe',
+	    				`pe_ratio`='$pe',
+	    				`pb_ratio`='$pb',
+	    				`fkbasicindustryid`='$basic_industry'
+	    			WHERE id = '$id'";
+
+    	   	if($conn->query($sql) === TRUE){
+    	   		//
+    	   		header("Location: ../company_edit.php?id=$id&success=1");
+    	   	}else{
+    	   		//
+    	   		header("Location: ../company_edit.php?id=$id&success=0");
+    	   	}
+    	    
+    	}
 	}
 
 ?>
