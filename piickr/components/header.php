@@ -23,6 +23,9 @@
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item has_dropdown">
+            <a class="nav-link" href="portfolio.php">Companies</a>
+          </li>
+          <li class="nav-item has_dropdown">
             <a class="nav-link" href="portfolio.php">Portfolio</a>
           </li>
           <li class="nav-item has_dropdown">

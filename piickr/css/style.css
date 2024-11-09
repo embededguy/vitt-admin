@@ -67,8 +67,8 @@
 /* -----------Css-variable------ */
 
 :root {
-    --light-yellow: #fdf7ec;
-    --primery: #06d6a0;
+    --light-yellow: #ffffff;
+    --primery: #4285F4;
     --dark-black: #181a22;
     --dark-greay: #9599ab;
     --greay: #afafaf;
@@ -419,7 +419,7 @@ header {
     z-index: 99999;
     transition: .4s all;
     backdrop-filter: blur(5px);
-    background-color: #fdf7ecd8;
+    background-color: #ffffffd8;
     border-bottom: 1px solid #cfcbc4;
 }
 
@@ -3994,4 +3994,13 @@ footer .download_side .app_btn li a img {
     background-color: var(--primery);
     z-index: -5;
     border-radius: 30px;
+}
+.indic li:not(:last-child)::after {
+    content: "|";
+    margin: 0 8px;
+    color: #06d6a0;
+}
+
+.indic li a{
+    color: white;
 }

@@ -4,10 +4,9 @@
     <div class="row">
       <div class="col-md-6">
         <div class="logo_side">
-          PIICKR
           <div class="logo">
             <a href="#">
-              <img src="images/ft_logo.png" alt="Vitt Footer Logo">
+              <img src="images/ft_logo.png" style="height: 80px;" alt="Vitt Footer Logo">
             </a>
           </div>
           <div class="news_letter">
@@ -56,7 +55,7 @@
     <div class="container">
       <div class="ft_inner">
         <div class="copy_text">
-          <p>© <script>document.write(new Date().getFullYear());</script>, Developed & Managed by <a href="https://vhiron.com" target="blank">Vhiron Technologies</a>.</p>
+          <p><strong style="color:white">Made with ❤️ in India</strong> | © <script>document.write(new Date().getFullYear());</script>, Developed & Managed by <a href="https://vhiron.com" target="_blank">Vhiron Technologies</a>.</p>
         </div>
         <ul class="links">
           <li><a href="index.php">Home</a></li>
@@ -66,6 +65,28 @@
         
       </div>
     </div>
+  </div>
+  <br/>
+  <div class="container">
+    <div class="row">
+      <h6 style="color: white;"><span>Most Popular on Vitt </span></h6>
+    </div>
+    <br/>
+    <div class="row" style="gap:10px">
+      <p style="color: white;"><span style="color:#06d6a0;font-weight: 700;">MARKET INDICES : </span></p>
+      <ul class="indic" style="margin: 0; display:flex;flex-wrap: wrap;flex-direction: row !important; align-items: normal; gap: 5px;">
+        <li><a href="">NIFTY 50</a></li>
+        <li><a href="">NIFTY 100</a></li>
+        <li><a href="">NIFTY MIDCAP 100</a></li>
+        <li><a href="">NIFTY BANK</a></li>
+        <li><a href="">NIFTY NEXT 50</a></li>
+        <li><a href="">BSE SENSEX</a></li>
+        <li><a href="">NIFTY METAL</a></li>
+        <li><a href="">NIFTY IT</a></li>
+        <li><a href="">NIFTY AUTO</a></li>
+      </ul>
+    </div>
+    
   </div>
 </footer>
 <!-- Footer-Section end -->

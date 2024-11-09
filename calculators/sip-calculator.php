@@ -201,7 +201,7 @@
 
 
     <div class="main-container">
-        <h1 class="calc-title">Home > Calculators > SIP Calclator</h1>
+        <h1 class="calc-title">Home > Calculators > SIP Calculator</h1>
         <br/>
         <div class="row">
             <!-- Left Column - SIP Calculator -->
@@ -262,9 +262,9 @@
                     <h3>More Calculators</h3>
                     <br/>
                     <ul class="calculator-list">
-                        <li><a href="#"> Lumpsum Calculator</a></li>
-                        <li><a href="#"> SWP Calculator</a></li>
-                        <li><a href="#"> Mutual Fund Returns Calculator</a></li>
+                        <li><a href="lumpsum-calculator.php"> Lumpsum Calculator</a></li>
+                        <li><a href="swp-calculator.php"> SWP Calculator</a></li>
+                        <li><a href="mf-calculator.php"> Mutual Fund Returns Calculator</a></li>
                         <li><a href="#"> PPF Calculator</a></li>
                         <li><a href="#"> EPF Calculator</a></li>
                         <li><a href="#"> FD Calculator</a></li>

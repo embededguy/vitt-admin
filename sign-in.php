@@ -36,10 +36,8 @@
     </div>
 
     <div class="full_bg">
-
       <section class="signup_section">
         <div class="container">
-
           <div class="top_part">
             <a href="index.html" class="back_btn"><i class="icofont-arrow-left"></i> Back to home</a>
             <a class="navbar-brand" href="#">
@@ -96,14 +94,9 @@
               </div>
             </div>
           </div>
-
         </div>
       </section>
-
     </div>
-
-
-
   </div>
   <!-- Page-wrapper-End -->
 
