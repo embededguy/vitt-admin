@@ -68,22 +68,17 @@
   </div>
   <br/>
   <div class="container">
-    <div class="row">
-      <h6 style="color: white;"><span>Most Popular on Vitt </span></h6>
-    </div>
-    <br/>
     <div class="row" style="gap:10px">
       <p style="color: white;"><span style="color:#06d6a0;font-weight: 700;">MARKET INDICES : </span></p>
       <ul class="indic" style="margin: 0; display:flex;flex-wrap: wrap;flex-direction: row !important; align-items: normal; gap: 5px;">
-        <li><a href="">NIFTY 50</a></li>
-        <li><a href="">NIFTY 100</a></li>
-        <li><a href="">NIFTY MIDCAP 100</a></li>
-        <li><a href="">NIFTY BANK</a></li>
-        <li><a href="">NIFTY NEXT 50</a></li>
-        <li><a href="">BSE SENSEX</a></li>
-        <li><a href="">NIFTY METAL</a></li>
-        <li><a href="">NIFTY IT</a></li>
-        <li><a href="">NIFTY AUTO</a></li>
+        <li><a href="./indice.php?name=NIFTY 50">NIFTY 50</a></li>
+        <li><a href="./indice.php?name=NIFTY 100">NIFTY 100</a></li>
+        <li><a href="./indice.php?name=NIFTY MIDCAP 100">NIFTY MIDCAP 100</a></li>
+        <li><a href="./indice.php?name=NIFTY BANK">NIFTY BANK</a></li>
+        <li><a href="./indice.php?name=NIFTY NEXT 50">NIFTY NEXT 50</a></li>
+        <li><a href="./indice.php?name=NIFTY METAL">NIFTY METAL</a></li>
+        <li><a href="./indice.php?name=NIFTY IT">NIFTY IT</a></li>
+        <li><a href="./indice.php?name=NIFTY AUTO">NIFTY AUTO</a></li>
       </ul>
     </div>
     

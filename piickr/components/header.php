@@ -20,6 +20,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item has_dropdown">
+            <div class="container-x">
+              <div class="indicator" id="niftystatus"></div>
+              <div class="indicator delay1"></div>
+              <div class="indicator delay2"></div>
+              <div class="indicator"></div>
+              <div class="indicator delay1"></div>
+              <div class="indicator delay2"></div>
+            </div>
+            <a class="nav-link" >Live</a>
+          </li>
+          <li class="nav-item has_dropdown">
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item has_dropdown">

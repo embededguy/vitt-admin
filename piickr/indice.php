@@ -1,15 +1,16 @@
 <?php
   include('config/db.php');
 
-  if(isset($_GET['symbol'])){
-    $sym = $_GET['symbol'];
+  if(isset($_GET['name'])){
+    $sym = $_GET['name'];
 
-    $sql = "SELECT * FROM scripts WHERE ticker_symbol = '$sym'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $p = $result->fetch_assoc();
-    }
+    // $sql = "SELECT * FROM scripts WHERE ticker_symbol = '$sym'";
+    // $result = $conn->query($sql);
+    // if ($result->num_rows > 0) {
+    //     $p = $result->fetch_assoc();
+    // }
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +21,8 @@
   <meta name='keywords' content=''>
   <meta name='description' content=''>
 
-  <meta name='og:title' content='Vitt App - Your Finance Partner!!'>
-  <meta name='og:image' content='images/vitt.png'>
+  <meta name='og:title' content='Piickr - '>
+  <meta name='og:image' content='images/logo.png'>
   <meta name='og:url' content='https://vittapp.in'>
   <meta name='og:site_name' content='Vitt App'>
   <meta name='og:description' content=''>
@@ -43,7 +44,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.min.css" />  <!-- Favicon -->
   <!--  -->
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  
+  <!-- Highcharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/treemap.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>  
+
   <!-- Marqueefy CSS -->
   <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@marqueefy/marqueefy@1.0.3/dist/css/marqueefy.min.css" 
@@ -65,7 +73,7 @@
     }
     #chartContainer {
       width: calc(100% - 10px);
-      height: 500px;
+      height: 600px;
       border-radius: 8px;
       background-color: #ffffff;
     }
@@ -321,10 +329,10 @@
                     <!-- Input Section -->
                     <div class="section">
                         <div class="stock-info">
-                            <img class="stock-logo" onerror="this.onerror=null; this.src='images/ni.png'" src="https://s3tv-symbol.dhan.co/symbols/<?= $sym ?>.svg"/>
+                            <img class="stock-logo" onerror="this.onerror=null; this.src='images/ni.png'" src="https://vittapp.in/<?= $p['imagepath']?>"/>
                             <div>
                                 <div class="stock-name">
-                                  <?= $p["company_name"]?>
+                                  <?= $name?>
                                 </div>
                                 <span id="counter" style="font-size: 22px;">0.00</span>                            
                             </div>
@@ -346,80 +354,7 @@
                         </div>
                         <br/>
                         <div class="row">
-                        <div class="col-md-12" style="margin-bottom: 20px;"><h3><img alt="image" src="images/fundamental.png" style="height: 60px;width: 60px; padding: 10px;" /> Fundamentals Analysis</h3></div>
-                        <div class="col-md-6">
-                          <table class="table custom-table">
-                            <thead>
-                              <tr>
-                                <th>Metric</th>
-                                <th>Value</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Market Cap</td>
-                                <td id="mcap"><strong>0</strong> Cr</td>
-                              </tr>
-                              <tr>
-                                <td>Book Value</td>
-                                <td id="bookvalue"><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>PE Ratio</td>
-                                <td id="pe"><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>PE for Sector</td>
-                                <td id="pes"><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>ROE</td>
-                                <td id="roe"><strong>0.00 %</strong></td>
-                              </tr>
-                              <tr>
-                                <td>Dividend Yield</td>
-                                <td id="div"><strong>0.00 %</strong></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-
-                        <div class="col-md-6">
-                          <table class="table custom-table">
-                            <thead>
-                              <tr>
-                                <th>Metric</th>
-                                <th>Value</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Open</td>
-                                <td id="open"><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>52 Week High</td>
-                                <td id="high"><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>52 Week Low</td>
-                                <td id="low"><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>PB Ratio</td>
-                                <td id="pb"><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>ROCE</td>
-                                <td id="roce"><strong>0.00 %</strong></td>
-                              </tr>
-                              <tr>
-                                <td>EPS</td>
-                                <td id="eps"><strong>0.00</strong></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
+                        <div class="col-md-12" style="margin-bottom: 20px;"><h3><img alt="image" src="images/fundamental.png" style="height: 60px;width: 60px; padding: 10px;" /> Fundamentals Analysis</h3></div>                        
                       </div>                       
                     </div>
                 </div>
@@ -428,69 +363,24 @@
             <!-- Right Column - More Calculators -->
             <div class="col-md-4">
                 <div class="more-calculators">
-                    <h3 style="color:#4285f4"><img alt="image" src="images/technical.png" style="height: 50px;width: 50px; padding: 10px;" /> Quick Lookup</h3>
-                    <div class="row">
-                        <div class="col-md-12">
-                          <table class="table custom-table">
-                            <thead>
-                              <tr>
-                                <th>Metric</th>
-                                <th>Value</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>1 Week Gain</td>
-                                <td><strong>0.00%</strong></td>
-                              </tr>
-                              <tr>
-                                <td>1 Month Gain</td>
-                                <td><strong>0.00%</strong></td>
-                              </tr>
-                              <tr>
-                                <td>1 Year Gain</td>
-                                <td><strong>0.00%</strong></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                    </div>
-                    <br/>
-                    <h3 style="color:#4285f4"><img alt="image" src="images/technical.png" style="height: 50px;width: 50px; padding: 10px;" /> Technical Analysis</h3>
-                    <div class="row">
-                        <div class="col-md-12">
-                          <table class="table custom-table">
-                            <thead>
-                              <tr>
-                                <th>Indicator</th>
-                                <th>Value</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>RSI (14)</td>
-                                <td id="rsi-14"><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>ATR (14)</td>
-                                <td><strong>0.00</strong></td>
-                              </tr>
-                              <tr>
-                                <td>MACD (12,26)</td>
-                                <td><strong>0.00</strong></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                    </div>
-                    <br/>
+                    <h3 style="color:#4285f4"><img alt="image" src="images/technical.png" style="height: 50px;width: 50px; padding: 10px;" />Explore Other Indices</h3>
+                    
+                    <br/>                    
                 </div>
             </div>
         </div>
         <br/>
-        <div class="col-md-8">
-            
-        </div>
+        <div class="row justify-content-center" style="text-align: center;width:100%;margin-top: 50px;gap: 20px; align-items: center;">
+        <h3 style="font-size: 25px;color: #4285f4;">✨ Heat Map ✨</h3>
+      </div>
+      
+      <div style="height: 50px;"></div>
+      <div class="card p-4 mb-4">
+        <!-- Heatmap Chart -->
+        <figure class="highcharts-figure">
+          <div id="container" style="height: 80vh;"></div>
+        </figure>
+      </div>
     </div>
 
 
@@ -524,56 +414,183 @@
         crossorigin="anonymous"></script>
 
   <script>
+      // API Endpoint
+      const apiEndpoint = 'https://api.vittapp.in/fetch_proxy.php?query=indice_stocks&name=<?= $sym?>'; // Replace with your API URL
+      
+      function getColor(value) {
+        if (value <= -3) return "#b71c1c";  // Deep Red for -3 or less
+        if (value > -3 && value <= -2) return "#d32f2f";  // Red for -2
+        if (value > -2 && value <= -1) return "#ef5350";  // Light Red for -1
+        if (value > -1 && value < 0) return "#ffcccb";    // Very Light Red for 0
+        if (value === 0) return "#c6c3c3";               // Neutral for 0 (white/gray)
+        if (value > 0 && value <= 1) return "#c8e6c9";   // Very Light Green for 1
+        if (value > 1 && value <= 2) return "#81c784";   // Light Green for 2
+        if (value > 2 && value <= 3) return "#4caf50";   // Green for 3
+        if (value > 3) return "#00904a";                // Deep Green for more than 3
+        return "#ffffff"; // Fallback color
+      }
+      
+      // Fetch data from API and populate the heatmap
+      async function fetchStockData() {
+        try {
+          const response = await fetch(apiEndpoint);
+          const jsonData = await response.json();
+      
+          // Extract the stock data array
+          const stockData = jsonData.data;
+      
+          // Process data into Highcharts format
+          const heatmapData = stockData.map((stock, index) => ({
+            id: `id_${index}`,
+            name: stock.symbol, // Stock symbol
+            value: parseFloat(stock.mVal), // Market Value
+            color: getColor(parseFloat(stock.iislPercChange)), // Green for positive change, red for negative
+            custom: {
+              price: parseFloat(stock.ltP), // Last Traded Price
+              change: parseFloat(stock.iislPercChange), // Percentage change
+              img: `https://s3tv-symbol.dhan.co/symbols/${stock.symbol}.svg`,
+            },
+          }));
+      
+          // Initialize Highcharts heatmap with the fetched data
+          Highcharts.chart('container', {
+            chart: {
+              type: 'treemap',
+              layoutAlgorithm: 'squarified',
+              backgroundColor: '#ffffff',
+            },
+      
+            title: {
+              text: '<?= $sym?>',
+              style: {
+                fontSize: '20px',
+                color: '#555',
+                marginBottom: "25px"
+              },
+            },
+      
+            colorAxis: {
+              dataClasses: [
+                { from: -3, to: -2, color: '#d32f2f', name: '-3 to -2' },
+                { from: -2, to: -1, color: '#ef5350', name: '-2 to -1' },
+                { from: -1, to: 0, color: '#ffcccb', name: '-1 to 0' },
+                { from: 0, to: 1, color: '#c8e6c9', name: '0 to 1' },
+                { from: 1, to: 2, color: '#81c784', name: '1 to 2' },
+                { from: 2, to: 3, color: '#4caf50', name: '2 to 3' },
+                { from: 3, color: '#2e7d32', name: '3 and above' }
+              ]
+            },
+      
+            tooltip: {
+              useHTML: true,
+              formatter: function () {
+                return `<b>${this.point.name}</b><br>
+                        Price: ₹${this.point.custom.price.toFixed(2)}<br>
+                        Market Cap: ₹${this.point.value.toFixed(2)} Cr<br>
+                        Change: ${this.point.custom.change.toFixed(2)}%`;
+              },
+              backgroundColor: '#ffffff',
+              borderColor: '#ccc',
+              borderRadius: 5,
+              zIndex:10,
+              style: {
+                color: '#333',
+                fontSize: '14px',
+              },
+            },
+      
+            series: [{
+              type: 'treemap',
+              data: heatmapData,
+              layoutAlgorithm: 'squarified',
+              clip: false,
+              dataLabels: {
+                enabled: true,
+                useHTML: true,
+                formatter: function () {
+                  const { width, height } = this.point.shapeArgs; // Get tile dimensions
+                  const tileSize = Math.min(width, height); // Use the smaller dimension for scaling
+                  const fontSize = Math.max(tileSize / 9, 10); // Adjust font size (minimum 10px)
+                  const imgSize = Math.max(tileSize / 3, 20); // Adjust image size (minimum 20px)
+                  const hideName = tileSize < 50; // Hide name if tile is too small
+      
+                  const name = this.point.name;
+                  const change = this.point.custom.change.toFixed(2);
+                  const src = this.point.custom.img;
+      
+                  return `
+                    <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px;">
+                      <img src="${src}" style="width:${imgSize}px;height:${imgSize}px;border-radius:50%;" />
+                      ${!hideName ? `<span style="font-size:${fontSize}px;font-weight:bold;">${name}</span>` : ''}
+                      <span style="font-size:${fontSize * 0.8}px;color:#fff;">${change}%</span>
+                    </div>`;
+                },
+                style: {
+                  textOutline: 'none',
+                  color: '#fff',
+                },
+              },
+            }],
+          });
+        } catch (error) {
+          console.error('Error fetching stock data:', error);
+        }
+      }
+      
+      // Fetch and render the heatmap
+      fetchStockData();
+  </script>
+
+  <script>
     let debounceTimer;
     let closingPrice = 0.0;
-    
+
     // Mock function to simulate fetching data from an API
     async function fetchStockData(searchQuery) {
-        if (!searchQuery) {
-            clearResults(); // Clear results if the input is empty
-            return;
-        }
+      if (!searchQuery) {
+        clearResults(); // Clear results if the input is empty
+        return;
+      }
 
-        const apiUrl = `https://api.vittapp.in/fcompany.php?search=${searchQuery}`;
+      const apiUrl = `https://api.vittapp.in/fcompany.php?search=${searchQuery}`;
 
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
 
-            displaySearchResults(data);
-        } catch (error) {
-            console.error('Error fetching stock data:', error);
-            displayErrorMessage();
-        }
+        displaySearchResults(data);
+      } catch (error) {
+        console.error('Error fetching stock data:', error);
+        displayErrorMessage();
+      }
     }
 
     // Debounce function to limit the frequency of API calls
     function debounceFetchData(callback, delay) {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(callback, delay);
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(callback, delay);
     }
 
     // Event listener for the search input (without search button)
     document.getElementById('stockSearchInput').addEventListener('input', (event) => {
-        const searchQuery = event.target.value.trim();
-        
-        // Debounce API calls to avoid too many requests while typing
-        debounceFetchData(() => fetchStockData(searchQuery), 300);
+      const searchQuery = event.target.value.trim();
+      // Debounce API calls to avoid too many requests while typing
+      debounceFetchData(() => fetchStockData(searchQuery), 300);
     });
 
     // Function to display the search results
     function displaySearchResults(stocks) {
-    const resultList = document.querySelector('.result-list');
-    resultList.style.display = "block"
-    resultList.innerHTML = ''; // Clear previous results
+      const resultList = document.querySelector('.result-list');
+      resultList.style.display = "block"
+      resultList.innerHTML = ''; // Clear previous results
 
-    if (stocks.length === 0) {
+      if (stocks.length === 0) {
         resultList.innerHTML = '<p>No results found for your search.</p>';
         return;
-    }
+      }
 
-    // Loop through the stocks array and create HTML elements for each result
-    stocks.forEach(stock => {
+      // Loop through the stocks array and create HTML elements for each result
+      stocks.forEach(stock => {
         const resultItem = document.createElement('div');
         resultItem.classList.add('result-item');
 
@@ -589,237 +606,58 @@
         const stockDetails = document.createElement('p');
         stockDetails.classList.add('result-subtitle');
         stockDetails.innerHTML = `
-            NSE: ${stock.symbol}
-        `;
+                NSE: ${stock.symbol}
+            `;
 
         // Append stockName and stockDetails to the link
         stockLink.appendChild(stockName);
         stockLink.appendChild(stockDetails);
-
         // Append the link to the result item
         resultItem.appendChild(stockLink);
-
         // Append the result item to the result list
         resultList.appendChild(resultItem);
-    });
-}
+      });
+    }
 
     // Function to clear results when input is empty
     function clearResults() {
-        const resultList = document.querySelector('.result-list');
-        resultList.style.display = "none"
-        resultList.innerHTML = '<p>Please enter a stock name to search.</p>';
+      const resultList = document.querySelector('.result-list');
+      resultList.style.display = "none"
+      resultList.innerHTML = '<p>Please enter a stock name to search.</p>';
     }
 
     // Function to display an error message
     function displayErrorMessage() {
-        const resultList = document.querySelector('.result-list');
-        resultList.innerHTML = '<p>Error fetching stock data. Please try again later.</p>';
+      const resultList = document.querySelector('.result-list');
+      resultList.innerHTML = '<p>Error fetching stock data. Please try again later.</p>';
     }
-     // Wait for the library to load, then use CountUp
-       
+    // Wait for the library to load, then use CountUp
+
     //
     function formatNumberIndianInteger(num) {
-        const integerPart = num.split(".")[0]; // Only take the integer part
-        const lastThreeDigits = integerPart.slice(-3);
-        const otherDigits = integerPart.slice(0, -3);
-        const formattedOtherDigits = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
-        const formattedNumber = otherDigits ? formattedOtherDigits + "," + lastThreeDigits : lastThreeDigits;
-        return formattedNumber;
+      const integerPart = num.split(".")[0]; // Only take the integer part
+      const lastThreeDigits = integerPart.slice(-3);
+      const otherDigits = integerPart.slice(0, -3);
+      const formattedOtherDigits = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+      const formattedNumber = otherDigits ? formattedOtherDigits + "," + lastThreeDigits : lastThreeDigits;
+      return formattedNumber;
     }
 
     function formatNumberIndian(num) {
-        const [integerPart, decimalPart] = num.split(".");
-        const lastThreeDigits = integerPart.slice(-3);
-        const otherDigits = integerPart.slice(0, -3);
-        const formattedOtherDigits = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
-        const formattedNumber = otherDigits ? formattedOtherDigits + "," + lastThreeDigits : lastThreeDigits;
+      const [integerPart, decimalPart] = num.split(".");
+      const lastThreeDigits = integerPart.slice(-3);
+      const otherDigits = integerPart.slice(0, -3);
+      const formattedOtherDigits = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+      const formattedNumber = otherDigits ? formattedOtherDigits + "," + lastThreeDigits : lastThreeDigits;
+      // Limit decimal part to 2 digits, or return just the integer part if no decimals
+      const limitedDecimalPart = decimalPart ? decimalPart.slice(0, 2) : null;
 
-        // Limit decimal part to 2 digits, or return just the integer part if no decimals
-        const limitedDecimalPart = decimalPart ? decimalPart.slice(0, 2) : null;
-        
-        return limitedDecimalPart ? `${formattedNumber}.${limitedDecimalPart}` : formattedNumber;
+      return limitedDecimalPart ? `${formattedNumber}.${limitedDecimalPart}` : formattedNumber;
     }
+  </script>
 
-    // Fetch data from API
-    async function fetchStockFundamental() {
-        try {
-            const response = await fetch(`https://api.vittapp.in/fetch_proxy.php?query=fundamentals&symbol=<?= $sym?>`); // Replace with your API URL
-            const fundamental = await response.json();
-            // Transform data to Lightweight Charts format
-            return fundamental;
-        } catch (error) {
-            console.error("Error fetching data:", error);
-            return [];
-        }
-    }
+  <script>
 
-    
-
-    // Fetch data from API
-    async function fetchChartData() {
-        try {
-            let now = Math.floor(Date.now()/1000) + 19800;
-            const response = await fetch(`https://api.vittapp.in/fetch_proxy.php?query=price&symbol=<?= $sym?>-EQ&interval=1&from=0&to=${now}&period=I`); // Replace with your API URL
-            const rawData = await response.json();
-            // Transform data to Lightweight Charts format
-            const candlestickData = rawData.t.map((time, index) => {
-                return {
-                    time: time,               // UNIX timestamp
-                    open: rawData.o[index],
-                    high: rawData.h[index],
-                    low: rawData.l[index],
-                    close: rawData.c[index]
-                };
-            });
-
-            return candlestickData;
-        } catch (error) {
-            console.error("Error fetching data:", error);
-            return [];
-        }
-    }
-
-    // Function to transform candlestick data for line chart
-    function generateLineData(candlestickData) {
-        return candlestickData.map(d => ({ time: d.time, value: d.close }));
-    }
-
-    // Initialize chart
-    const chartContainer = document.getElementById('chartContainer');
-    const chart = LightweightCharts.createChart(chartContainer, {
-        layout: { background: { color: "#ffffff" }, textColor: '#333' },
-        grid: { vertLines: { color: '#eee' }, horzLines: { color: '#eee' } },
-        priceScale: { borderColor: '#eee', priceVisible: true, position: 'left' },
-        timeScale: { borderColor: '#eee', timeVisible: true },
-    });
-
-    let currentChartType = 'candlestick';
-    let candlestickSeries;
-    let lineSeries;
-
-    // Load initial chart data
-    async function loadCandlestickData() {
-        const candlestickData = await fetchChartData();
-
-        // Add candlestick series to the chart
-        candlestickSeries = chart.addCandlestickSeries({
-            upColor: '#4caf50',
-            downColor: '#f44336',
-            borderUpColor: '#4caf50',
-            borderDownColor: '#f44336',
-            wickUpColor: '#4caf50',
-            wickDownColor: '#f44336'
-        });
-
-        candlestickSeries.setData(candlestickData);
-        document.getElementById("counter").innerHTML=`₹${formatNumberIndian(candlestickData[candlestickData.length-1]["close"].toFixed(2))} <span class="${(candlestickData[candlestickData.length-1]["close"].toFixed(2) - closingPrice).toFixed(2) > 0? 'positive': 'negative'}">${(candlestickData[candlestickData.length-1]["close"].toFixed(2) - closingPrice).toFixed(2)} (${(((candlestickData[candlestickData.length-1]["close"] - closingPrice)/closingPrice)*100).toFixed(2)}%)</span>`;
-
-        // Add hover event listener to show OHLC tooltip
-        chart.subscribeCrosshairMove((param) => {
-            const ohlcTooltip = document.getElementById('ohlcTooltip');
-            if (!param || !param.seriesData || param.seriesData.size === 0) {
-                ohlcTooltip.innerText = '';
-                return;
-            }
-
-            const data = param.seriesData.get(candlestickSeries);
-            if (data) {
-                ohlcTooltip.innerText = `O: ${data.open.toFixed(2)} | H: ${data.high.toFixed(2)} | L: ${data.low.toFixed(2)} | C: ${data.close.toFixed(2)}`;
-            }
-        });
-    }
-    // Function to fetch and update candlestick data
-    async function updateCandlestickData() {
-        const candlestickData = await fetchChartData();
-
-        // Check if candlestick series exists before updating
-        if (candlestickSeries) {
-            candlestickSeries.setData(candlestickData);
-            document.getElementById("counter").innerHTML=`₹${formatNumberIndian(candlestickData[candlestickData.length-1]["close"].toFixed(2))} <span class="${(candlestickData[candlestickData.length-1]["close"].toFixed(2) - closingPrice).toFixed(2) > 0? 'positive': 'negative'}">${(candlestickData[candlestickData.length-1]["close"].toFixed(2) - closingPrice).toFixed(2)} (${(((candlestickData[candlestickData.length-1]["close"] - closingPrice)/closingPrice)*100).toFixed(2)}%)</span>`;
-
-        } else {
-            candlestickSeries = chart.addCandlestickSeries({
-                upColor: '#4caf50',
-                downColor: '#f44336',
-                borderUpColor: '#4caf50',
-                borderDownColor: '#f44336',
-                wickUpColor: '#4caf50',
-                wickDownColor: '#f44336'
-            });
-            candlestickSeries.setData(candlestickData);
-            document.getElementById("counter").innerHTML=`₹${formatNumberIndian(candlestickData[candlestickData.length-1]["close"].toFixed(2))} <span class="${(candlestickData[candlestickData.length-1]["close"].toFixed(2) - closingPrice).toFixed(2) > 0? 'positive': 'negative'}">${(candlestickData[candlestickData.length-1]["close"].toFixed(2) - closingPrice).toFixed(2)} (${(((candlestickData[candlestickData.length-1]["close"] - closingPrice)/closingPrice)*100).toFixed(2)}%)</span>`;
-        }
-    }
-    // Load initial data and set up periodic updates
-    async function initializeChart() {
-        await loadCandlestickData(); // Initial load
-
-        setInterval(updateCandlestickData, 10000);
-    }
-
-    // Call initializeChart to set up the chart with initial data and start auto-updates
-    initializeChart();
-
-    // Toggle chart type
-    document.getElementById('toggleChartType').addEventListener('click', async () => {
-        if (currentChartType === 'candlestick') {
-            chart.removeSeries(candlestickSeries);
-            const candlestickData = await fetchChartData();
-            const lineData = generateLineData(candlestickData);
-
-            lineSeries = chart.addLineSeries({
-                color: '#4285f4',
-                lineWidth: 2
-            });
-            lineSeries.setData(lineData);
-            currentChartType = 'line';
-
-            document.getElementById('toggleChartType').children[0].src = 'images/candle.png';
-        } else {
-            chart.removeSeries(lineSeries);
-            await loadCandlestickData();
-            currentChartType = 'candlestick';
-            document.getElementById('toggleChartType').children[0].src = 'images/line.png';
-        }
-    });
-
-    // Responsive chart
-    window.addEventListener('resize', () => {
-        chart.resize(chartContainer.clientWidth, chartContainer.clientHeight);
-    });
-
-    document.addEventListener("DOMContentLoaded", async function(event) {
-      document.getElementById("tv-attr-logo").innerHTML = "<img width=80 src='images/logo.png'>"
-      document.getElementById("tv-attr-logo").href = "https://piickr.vittapp.in"
-      let info = await fetchStockFundamental();
-      closingPrice = info["data"][0]["Close"];
-
-      if(info){
-        document.getElementById("counter").innerHTML=`<strong>₹0.00</strong>`;
-
-        document.getElementById("mcap").innerHTML=`<strong>${formatNumberIndianInteger((info["data"][0]["Mcap"]).toString())} Cr</strong>`;        
-        document.getElementById("bookvalue").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["BookValue"]).toString())}</strong>`;        
-        document.getElementById("pe").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["Pe"]).toString())}</strong>`;        
-        document.getElementById("pes").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["Ind_Pe"]).toString())}</strong>`;        
-        document.getElementById("roe").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["Roe"]).toString())} %</strong>`;        
-        document.getElementById("div").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["DivYeild"]).toString())} %</strong>`;        
-
-          
-        document.getElementById("high").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["High1Yr"]).toString())}</strong>`;        
-        document.getElementById("low").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["Low1Yr"]).toString())}</strong>`;        
-        document.getElementById("open").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["Open"]).toString())}</strong>`;        
-        document.getElementById("pb").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["Pb"]).toString())}</strong>`;        
-        document.getElementById("roce").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["ROCE"]).toString())} %</strong>`;        
-        document.getElementById("eps").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["Eps"]).toString())}</strong>`;        
-      
-
-
-        document.getElementById("rsi-14").innerHTML=`<strong>${formatNumberIndian((info["data"][0]["DayRSI14CurrentCandle"]).toString())}</strong>`;
-
-      }
-    });
-    
   </script>
 </body>
 </html>

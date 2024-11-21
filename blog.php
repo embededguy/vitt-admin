@@ -3,8 +3,6 @@
 
   $sql = "SELECT * FROM blog_type";
   
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

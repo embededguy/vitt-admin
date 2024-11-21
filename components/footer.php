@@ -55,7 +55,7 @@
     <div class="container">
       <div class="ft_inner">
         <div class="copy_text">
-          <p><span style="color:orange">#</span> Made with ❤️ in India | © <script>document.write(new Date().getFullYear());</script>, Developed & Managed by <a href="https://vhiron.com" target="blank">Vhiron Technologies</a>.</p>
+          <p><strong style="color:white">Made with ❤️ in India</strong> | © <script>document.write(new Date().getFullYear());</script>, Developed & Managed by <a href="https://vhiron.com" target="_blank">Vhiron Technologies</a>.</p>
         </div>
         <ul class="links">
           <li><a href="index.php">Home</a></li>
